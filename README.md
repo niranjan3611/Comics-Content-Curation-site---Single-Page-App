@@ -9,10 +9,10 @@ __Team members:__
 
 __Heroku URL:__ _url_
 
-__Argument of ambition:__
+__Argument of ambition (optional, maximum 100 words):__
 _Briefly argue why this was a technically ambitious project_
 
-__Argument of execution:__
+__Argument of execution (optional, maximum 100 words):__
 _Briefly argue why this was a well executed project_
 
 ## Description ##
