@@ -15,6 +15,7 @@ var userSession;
 /* GET home page. */
 router.get('/', function(req, res, next) {
     if(userSession && userSession.email) {
+        console.log(userSession.email, ' currently logged in');
         res.write("<h2> Hi! You are logged into WebCrows portal! </h2><hr>");
         res.end('If you want to logout : <a href="/logout">here</a>')
     }
@@ -60,13 +61,16 @@ router.post('/login', function(req, res) {
 
 
 router.get('/logout',function(req,res){
-    req.session.destroy(function(err) {
+    /*req.session.destroy(function(err) {
       if(err) {
         console.log(err);
       } else {
         res.redirect('/');
       }
-    });
+    });*/
+    delete userSession.email;
+    delete req.session.email;
+    res.redirect('/');
 });
 
 module.exports = router;
