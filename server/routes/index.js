@@ -40,15 +40,11 @@ router.post('/signup', function(req, res){
     res.redirect('/');
 });
 
-router.get('/:username/:password', function(req, res) {
-    var aNewUser = new User();
-    aNewUser.local.username = req.params.username;
-    aNewUser.local.password = req.params.password;
-    console.log(aNewUser.local.username+ " " + aNewUser.local.password);
-    aNewUser.save(function(err){
-                        if(err)
-                            throw err;
-                })
-    res.send('Success');
+router.get('/login', function(req,res) {
+    res.render(indexView);
+});
+
+router.post('/login', function(req, res) {
+    
 });
 module.exports = router;
