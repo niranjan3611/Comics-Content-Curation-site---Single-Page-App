@@ -5,6 +5,11 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
+var mongoose = require('mongoose');
+
+var configDB = require('./data/database');
+mongoose.connect(configDB.url);
 
 var routes = require('./routes/index');
 var api = require('./routes/api');
@@ -21,9 +26,13 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(session({secret: 'W3bC40W$',
+                 saveUnitialized: true,
+                 resave: true}));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// app.use('/', routes);
+app.use('/', routes);
+
 app.use('/api', api);
 
 var reactBase = path.resolve(__dirname, '../client/build')
