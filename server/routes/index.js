@@ -10,11 +10,17 @@ if (!fs.existsSync(clientSrc)) {
 }
 var indexView = path.join(clientSrc, 'views/index.ejs');
 var signupView = path.join(clientSrc, 'views/signup.ejs');
+var userSession;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render(indexView);
-    
+    if(userSession && userSession.email) {
+        res.write("<h2> Hi! You are logged into WebCrows portal! </h2><hr>");
+        res.end('If you want to logout : <a href="/logout">here</a>')
+    }
+    else {
+        res.render(indexView);    
+    }
   /*res.send('hi. try <a href="/api/example/">example two</a>');
     console.log('**************');
     console.log('**************');
@@ -45,6 +51,22 @@ router.get('/login', function(req,res) {
 });
 
 router.post('/login', function(req, res) {
+    userSession = req.session;
+    /* TODO retrieve from db and validate password */
     
+    userSession.email = req.body.email;
+    res.end('user logged in');
 });
+
+
+router.get('/logout',function(req,res){
+    req.session.destroy(function(err) {
+      if(err) {
+        console.log(err);
+      } else {
+        res.redirect('/');
+      }
+    });
+});
+
 module.exports = router;
