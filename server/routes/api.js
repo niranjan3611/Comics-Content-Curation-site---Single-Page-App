@@ -61,7 +61,6 @@ router.get('/explore', function(req, res, next) {
 });
 
 router.get('/pins/display/:postId', function(req, res, next) {
-  console.log("pins paramsid called")
   var postid = req.params.postId;
   db.postDetail.find({postId: postid}).toArray(function(err, result) {
     if(err)
@@ -75,6 +74,21 @@ router.get('/pins/display/:postId', function(req, res, next) {
     else
     {
       res.status(404).send('post not found ', req.params.postId);
+    }
+  });
+});
+
+router.get('/delete/:postId', function(req, res, next) {
+  var postid = req.params.postId;
+  db.postDetail.remove({postId: postid}, function(err, noOfRemovedDocs){
+    if (err)
+    {
+      res.status(404).send('post not found ', req.params.postId);
+    }
+    else
+    {
+      var foo = {flag: 1};
+      res.send(foo);
     }
   });
 });
