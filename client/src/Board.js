@@ -14,6 +14,19 @@ var Board = React.createClass({
             ]
         }
     },
+    componentDidMount() {
+        var self = this;
+        request
+         .get('/explore')
+         .set('Accept', 'application/json')
+         .end(function(err, res) {
+           if (err || !res.ok) {
+             console.log('Oh no! error', err);
+           } else {
+             self.setState({notes: res.body.bar});
+           }
+         });
+      },
     remove(id) {
         var notes = this.state.notes.filter(note => note.id !== id)
         this.setState({notes})
