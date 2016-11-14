@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import logo from './logo.svg';
 import './MainLayout.css';
 
 class MainLayout extends Component {
@@ -9,8 +8,8 @@ class MainLayout extends Component {
     return (
       <div className="MainLayout">
         <div className="MainLayout__header">
-          <img src={logo} className="MainLayout__logo" alt="logo" />
-          <h2>San Dimas High School Football</h2>
+          <h1>Webcrows learning React</h1>
+
         </div>
 
         <main>
