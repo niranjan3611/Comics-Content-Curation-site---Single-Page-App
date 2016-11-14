@@ -4,7 +4,7 @@ var router = express.Router();
 var mongojs = require("mongojs");
 var db = mongojs('mongodb://webcrows:umncsfall16@ds019068.mlab.com:19068/webcrowsdb', ['userInfo','postDetail']);
 
-router.get('/pins/:userId', function(req, res, next) {
+router.get('/pins/userpage/:userId', function(req, res, next) {
   var userid = req.params.userId;
   db.userInfo.find({userId: userid}).toArray(function(err, result) {
     if(err)
@@ -23,7 +23,7 @@ router.get('/pins/:userId', function(req, res, next) {
   });
 });
 
-router.get('/pins/:tagId', function(req, res, next) {
+router.get('/pins/tagsearch/:tagId', function(req, res, next) {
   var tagid = req.params.tagId;
   db.postDetail.find({postTag: tagid}).toArray(function(err, result) {
     if(err)
@@ -43,7 +43,6 @@ router.get('/pins/:tagId', function(req, res, next) {
 });
 
 router.get('/explore', function(req, res, next) {
-  console.log('came to explore');
   db.postDetail.find({}).toArray(function(err, result) {
       if(err)
       {
@@ -51,7 +50,7 @@ router.get('/explore', function(req, res, next) {
       }
       else if (result.length)
       {
-        var foo = {bar: result};
+        var foo = {allposts: result};
         res.send(foo);
       }
       else
@@ -61,7 +60,8 @@ router.get('/explore', function(req, res, next) {
     });
 });
 
-router.get('/pins/:postId', function(req, res, next) {
+router.get('/pins/display/:postId', function(req, res, next) {
+  console.log("pins paramsid called")
   var postid = req.params.postId;
   db.postDetail.find({postId: postid}).toArray(function(err, result) {
     if(err)
@@ -70,8 +70,7 @@ router.get('/pins/:postId', function(req, res, next) {
     }
     else if (result.length)
     {
-      var foo={baz: result}
-      res.send(foo);
+      res.send(result[0]);
     }
     else
     {

@@ -12,7 +12,7 @@ render((
   <Router history={browserHistory}>
     <Route component={MainLayout}>
       <Route path="/" component={Board}/>
-      <Route path="pins/:pinid" component={PinDetails}/>
+      <Route path="pins/:postId" component={PinDetails}/>
     </Route>
   </Router>
 ), document.getElementById('react-container'))

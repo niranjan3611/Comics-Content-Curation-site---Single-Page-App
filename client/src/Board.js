@@ -6,33 +6,31 @@ import Note from './Note';
 var Board = React.createClass({
     getInitialState() {
         return {
-            notes: []
+            notes: ['']
         }
     },
     componentDidMount() {
-        var self = this;
-        request
-         .get('/explore')
-         .set('Accept', 'application/json')
-         .end(function(err, res) {
-           if (err || !res.ok) {
-             console.log('Oh no! error', err);
-           } else {
-             self.setState({notes: res.body.bar});
-             console.log('Loaded state notes')
-           }
-         });
+      var self = this;
+      request
+       .get('/api/explore')
+       .set('Accept', 'application/json')
+       .end(function(err, res) {
+         if (err || !res.ok) {
+           console.log('Oh no! error', err);
+         } else {
+           self.setState({notes: res.body.allposts});
+         }
+       });
     },
     remove(id) {
-        var notes = this.state.notes.filter(note => note.id !== id)
+        var notes = this.state.notes.filter(note => note.postId !== id)
         this.setState({notes})
     },
     eachNote(note) {
-        return (<Note key={note.id}
-                      id={note.id}
-                      onChange={this.update}
+        return (<Note key={note.postId}
+                      id={note.postId}
                       onRemove={this.remove}>
-                  {note.note}
+                  {note.postTitle}
                 </Note>)
     },
     render() {
