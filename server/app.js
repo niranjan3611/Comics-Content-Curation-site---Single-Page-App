@@ -7,8 +7,11 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var mongoose = require('mongoose');
-
 var configDB = require('./data/database');
+// Ambuj start
+var mongojs = require("mongojs");
+var db = mongojs('mongodb://webcrows:umncsfall16@ds019068.mlab.com:19068/webcrowsdb', ['userInfo','postDetail']);
+// Ambuj end
 mongoose.connect(configDB.url);
 
 var routes = require('./routes/index');
@@ -77,6 +80,5 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
 
 module.exports = app;
