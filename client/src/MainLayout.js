@@ -8,7 +8,7 @@ class MainLayout extends Component {
     return (
       <div className="MainLayout">
         <div className="MainLayout__header">
-          <h1>Webcrows learning React</h1>
+          <h1>Webcrows learning React: Day 2</h1>
         </div>
         <main>
           {this.props.children}

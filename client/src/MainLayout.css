@@ -149,3 +149,7 @@ div.note > textarea {
   border-radius: 15px;
   font-family: Glober;
 }
+
+h1 {
+  text-align: center;
+}
