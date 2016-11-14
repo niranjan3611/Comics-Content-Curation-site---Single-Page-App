@@ -9,9 +9,7 @@ class MainLayout extends Component {
       <div className="MainLayout">
         <div className="MainLayout__header">
           <h1>Webcrows learning React</h1>
-
         </div>
-
         <main>
           {this.props.children}
         </main>

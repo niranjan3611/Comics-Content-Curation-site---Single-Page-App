@@ -1,15 +1,9 @@
 @import url(http://fonts.googleapis.com/css?family=Shadows+Into+Light);
 
-body,
-html,
 div.board,
 div#react-container {
   margin: 0;
   height: 100%;
-}
-
-body {
-  background: url(http://subtlepatterns.com/patterns/scribble_light.png) ;
 }
 
 img {
@@ -144,4 +138,14 @@ div.note > textarea {
     -moz-column-count: 5;
     column-count: 5;
   }
+}
+
+
+.MainLayout__header {
+  background-color: #4B3621;
+  height: 170px;
+  padding: 20px;
+  color: white;
+  border-radius: 15px;
+  font-family: Glober;
 }
