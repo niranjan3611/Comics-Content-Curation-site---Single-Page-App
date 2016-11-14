@@ -87,6 +87,7 @@ router.get('/delete/:postId', function(req, res, next) {
     }
     else
     {
+      console.log('deleted from db');
       var foo = {flag: 1};
       res.send(foo);
     }
