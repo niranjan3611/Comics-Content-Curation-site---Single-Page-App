@@ -12,7 +12,9 @@ var Note = React.createClass({
     render() {
       return (
         <div className="pin">
+                <Link to={`/pins/${this.props.id}`}>
                 <img src = {this.props.children} />
+                </Link>
                 <p>{this.props.children}</p>
                 <span>
                   <button onClick={this.remove}>X</button>
