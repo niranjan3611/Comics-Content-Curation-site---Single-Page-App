@@ -14,7 +14,9 @@
     "generator-react-webpack": "^3.3.4",
     "mongoose": "^4.6.6",
     "morgan": "~1.7.0",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+    "mongodb": "^2.2.10",
+    "mongojs": "^2.4.0"
   },
   "devDependencies": {
     "foreman": "^2.0.0",
