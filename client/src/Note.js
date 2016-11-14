@@ -15,8 +15,7 @@ var Note = React.createClass({
                 <Link to={`/pins/${this.props.id}`}>
                 <img src = {this.props.children} />
                 </Link>
-                <p>{this.props.children}</p>
-
+                <p>{this.props.title}</p>
                 <span>
                   <button onClick={this.remove}>X</button>
                 </span>

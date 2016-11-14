@@ -24,10 +24,13 @@ var PinDetails = React.createClass({
   render() {
     return (
       <div>
-      <p>Title: <b>{this.state.pin.postTitle}</b></p>
-      <p>Detail: <b>{this.state.pin.postDetail}</b></p>
-      <p>Uploader: <b>{this.state.pin.postUser}</b></p>
-      <p>Tag: <b>{this.state.pin.postTag}</b></p>
+        <br />
+      <img src = {this.state.pin.postPic} />
+      <p><b>Title: </b>{this.state.pin.postTitle}</p>
+      <p><b>Detail: </b>{this.state.pin.postDetail}</p>
+      <p><b>Uploader: </b>{this.state.pin.postUser}</p>
+      <p><b>Tag: </b>{this.state.pin.postTag}</p>
+      <p><b>URL: </b>{this.state.pin.postURL}</p>
       </div>
     )
   }

@@ -29,6 +29,7 @@ var Board = React.createClass({
     eachNote(note) {
         return (<Note key={note.postId}
                       id={note.postId}
+                      title={note.postTitle}
                       onRemove={this.remove}>
                   {note.postPic}
                 </Note>)
