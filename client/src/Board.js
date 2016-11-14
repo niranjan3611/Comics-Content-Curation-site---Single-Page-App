@@ -6,12 +6,7 @@ import Note from './Note';
 var Board = React.createClass({
     getInitialState() {
         return {
-            notes: [
-              {id: 0, note: './paris.jpg'},
-              {id: 1, note: './berlin.jpg'},
-              {id: 2, note: './newyork.jpg'},
-              {id: 3, note: './rio.jpg'}
-            ]
+            notes: []
         }
     },
     componentDidMount() {
@@ -24,9 +19,10 @@ var Board = React.createClass({
              console.log('Oh no! error', err);
            } else {
              self.setState({notes: res.body.bar});
+             console.log('Loaded state notes')
            }
          });
-      },
+    },
     remove(id) {
         var notes = this.state.notes.filter(note => note.id !== id)
         this.setState({notes})

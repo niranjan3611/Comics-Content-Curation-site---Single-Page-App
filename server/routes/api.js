@@ -43,6 +43,7 @@ router.get('/pins/:tagId', function(req, res, next) {
 });
 
 router.get('/explore', function(req, res, next) {
+  console.log('came to explore');
   db.postDetail.find({}).toArray(function(err, result) {
       if(err)
       {
