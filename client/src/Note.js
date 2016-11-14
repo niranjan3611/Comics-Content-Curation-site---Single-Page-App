@@ -16,6 +16,7 @@ var Note = React.createClass({
                 <img src = {this.props.children} />
                 </Link>
                 <p>{this.props.children}</p>
+
                 <span>
                   <button onClick={this.remove}>X</button>
                 </span>
