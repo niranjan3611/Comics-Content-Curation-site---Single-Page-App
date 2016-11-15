@@ -22,7 +22,7 @@ router.get('/userpage/:userId', function(req, res, next) {
   });
 });
 
-router.get('/pins/tagsearch/:tagId', function(req, res, next) {
+router.get('/tagsearch/:tagId', function(req, res, next) {
   var tagid = req.params.tagId;
   db.postDetail.find({postTag: tagid}).toArray(function(err, result) {
     if(err)
@@ -31,7 +31,7 @@ router.get('/pins/tagsearch/:tagId', function(req, res, next) {
     }
     else if(result.length)
     {
-      var foo = {boo: result}
+      var foo = {tagPosts: result}
       res.send(foo);
     }
     else
