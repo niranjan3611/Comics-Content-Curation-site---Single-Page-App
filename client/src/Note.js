@@ -17,6 +17,7 @@ var Note = React.createClass({
                 </Link>
                 <p>{this.props.title}</p>
                 <span>
+                  <button>Like</button>
                   <button onClick={this.remove}>X</button>
                 </span>
             </div>
