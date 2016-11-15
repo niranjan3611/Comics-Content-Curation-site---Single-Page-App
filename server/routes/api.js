@@ -4,7 +4,7 @@ var router = express.Router();
 var mongojs = require("mongojs");
 var db = mongojs('mongodb://webcrows:umncsfall16@ds019068.mlab.com:19068/webcrowsdb', ['userInfo','postDetail']);
 
-router.get('/pins/userpage/:userId', function(req, res, next) {
+router.get('/userpage/:userId', function(req, res, next) {
   var userid = req.params.userId;
   db.userInfo.find({userId: userid}).toArray(function(err, result) {
     if(err)
@@ -13,8 +13,7 @@ router.get('/pins/userpage/:userId', function(req, res, next) {
     }
     else if(result.length)
     {
-      var foo = {zoo: result};
-      res.send(foo);
+      res.send(result[0]);
     }
     else
     {
@@ -25,7 +24,7 @@ router.get('/pins/userpage/:userId', function(req, res, next) {
 
 router.get('/pins/tagsearch/:tagId', function(req, res, next) {
   var tagid = req.params.tagId;
-  db.postDetail.find({postTag: tagid}).sort({postLike: -1}).toArray(function(err, result) {
+  db.postDetail.find({postTag: tagid}).toArray(function(err, result) {
     if(err)
     {
       res.status(404).send('invalid user ', req.params.userId);
@@ -43,7 +42,7 @@ router.get('/pins/tagsearch/:tagId', function(req, res, next) {
 });
 
 router.get('/explore', function(req, res, next) {
-  db.postDetail.find({}).sort({postLike: -1}).toArray(function(err, result) {
+  db.postDetail.find({}).toArray(function(err, result) {
       if(err)
       {
         res.status(404).send('no posts found');
@@ -87,28 +86,9 @@ router.get('/delete/:postId', function(req, res, next) {
     }
     else
     {
+      console.log('deleted from db');
       var foo = {flag: 1};
       res.send(foo);
-    }
-  });
-});
-
-router.post('/like/:postId', function(req, res, next)
-{
-  var postid = req.params.postId;
-  db.postDetail.update({postId: postid}, {$inc: {postLike: 1}}, function(err, noUpdated){
-    if (err)
-    {
-      res.status(404).send('post not found ', req.params.postId);
-    }
-    else if (noUpdated)
-    {
-      var foo = {flag: 1};
-      res.send(foo);
-    }
-    else
-    {
-      res.status(404).send('post not found ', req.params.postId);
     }
   });
 });

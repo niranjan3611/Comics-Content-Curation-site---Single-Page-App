@@ -7,12 +7,14 @@ import { Router, Route, browserHistory } from 'react-router'
 import Board from './Board'
 import MainLayout from './MainLayout'
 import PinDetails from './PinDetails'
+import UserPage from './UserPage'
 
 render((
   <Router history={browserHistory}>
     <Route component={MainLayout}>
       <Route path="/" component={Board}/>
       <Route path="pins/:postId" component={PinDetails}/>
+      <Route path="/user/:userId" component={UserPage}/>
     </Route>
   </Router>
 ), document.getElementById('react-container'))
