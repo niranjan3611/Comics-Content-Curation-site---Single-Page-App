@@ -93,6 +93,28 @@ router.get('/delete/:postId', function(req, res, next) {
   });
 });
 
+router.get('/loginX/:userId/:userPass', function(req, res, next){
+  var userid = req.params.userId;
+  var userpass = req.params.userPass;
+  db.userInfo.find({userId: userid, userPass: userpass}).toArray(function(err, result) {
+    if(err)
+    {
+      var foo = {flag: 0};
+      res.send(foo);
+    }
+    else if(result.length)
+    {
+      var foo = {flag: 1};
+      res.send(foo);
+    }
+    else
+    {
+        var foo = {flag: 0};
+        res.send(foo);
+    }
+  });
+});
+
 // Ambuj end
 
 var movies = require('../data/movies.json')

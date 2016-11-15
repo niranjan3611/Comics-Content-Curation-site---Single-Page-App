@@ -5,7 +5,7 @@ import Note from './Note';
 
 
 var UserPage = React.createClass({
-  getInitialState() {
+  getInitialState() { 
       return {
           notes: ['']
       }
@@ -57,7 +57,7 @@ var UserPage = React.createClass({
     return(
       <div>
       <h1>Welcome {this.props.routeParams.userId}. Here is your feed.</h1>
-      <a href="/"><h2>Explore</h2></a>
+      <a href="/explore"><h2>Explore</h2></a>
       <div className="wrapper">
       <div className="columns">
       <div className='board'>
