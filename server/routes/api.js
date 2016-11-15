@@ -25,7 +25,7 @@ router.get('/pins/userpage/:userId', function(req, res, next) {
 
 router.get('/pins/tagsearch/:tagId', function(req, res, next) {
   var tagid = req.params.tagId;
-  db.postDetail.find({postTag: tagid}).toArray(function(err, result) {
+  db.postDetail.find({postTag: tagid}).sort({postLike: -1}).toArray(function(err, result) {
     if(err)
     {
       res.status(404).send('invalid user ', req.params.userId);
@@ -43,7 +43,7 @@ router.get('/pins/tagsearch/:tagId', function(req, res, next) {
 });
 
 router.get('/explore', function(req, res, next) {
-  db.postDetail.find({}).toArray(function(err, result) {
+  db.postDetail.find({}).sort({postLike: -1}).toArray(function(err, result) {
       if(err)
       {
         res.status(404).send('no posts found');
@@ -87,9 +87,28 @@ router.get('/delete/:postId', function(req, res, next) {
     }
     else
     {
-      console.log('deleted from db');
       var foo = {flag: 1};
       res.send(foo);
+    }
+  });
+});
+
+router.post('/like/:postId', function(req, res, next)
+{
+  var postid = req.params.postId;
+  db.postDetail.update({postId: postid}, {$inc: {postLike: 1}}, function(err, noUpdated){
+    if (err)
+    {
+      res.status(404).send('post not found ', req.params.postId);
+    }
+    else if (noUpdated)
+    {
+      var foo = {flag: 1};
+      res.send(foo);
+    }
+    else
+    {
+      res.status(404).send('post not found ', req.params.postId);
     }
   });
 });
