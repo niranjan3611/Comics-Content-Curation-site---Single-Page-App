@@ -15,7 +15,7 @@ render() {
     <form>
       <input
         type="text"
-        placeholder="Search..."
+        placeholder="Tag Search..."
         value={this.props.filterText}
         ref="filterTextInput"
         onChange={this.handleChange}
@@ -80,7 +80,7 @@ var Board = React.createClass({
       var filteredNotes = []
       this.state.notes.forEach((note) => {
         var notevar = "" + note.postTag
-        if (notevar.indexOf(this.state.filterText) === -1) {
+        if (notevar.toLowerCase().indexOf(this.state.filterText.toLowerCase()) === -1) {
           return;
         }
         else {
@@ -89,6 +89,7 @@ var Board = React.createClass({
       });
         return (
           <div>
+          <br/>
           <SearchBar
             filterText={this.state.filterText}
             onUserInput={this.handleUserInput}
