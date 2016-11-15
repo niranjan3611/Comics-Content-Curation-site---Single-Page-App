@@ -115,6 +115,28 @@ router.get('/loginX/:userId/:userPass', function(req, res, next){
   });
 });
 
+router.get('/signUpX/:userId/:userName/:userEmail/:userPass/:userTags', function(req, res, next){
+  var userid = req.params.userId;
+  var username = req.params.userName;
+  var useremail = req.params.userEmail;
+  var userpass = req.params.userPass;
+  var usertags = req.params.userTags;
+  var tempString = usertags.split(',');
+  db.userInfo.insert({userId: userid, userName: username, userEmail: useremail, userPass: userpass, userTags: tempString}, function(err, noOfInsertedDocs){
+    if (err)
+    {
+      console.log('failed spectacularly');
+      res.status(404).send('could not insert ');
+    }
+    else
+    {
+      console.log('inserted into db');
+      var foo = {flag: 1};
+      res.send(foo);
+    }
+  });
+});
+
 // Ambuj end
 
 var movies = require('../data/movies.json')
