@@ -8,8 +8,8 @@ class MainLayout extends Component {
     return (
       <div className="MainLayout">
         <div className="MainLayout__header">
-          <h1>Webcrows learning React: Day 2</h1>
-          <h3>Please do not delete more than 1 image for testing. Yet to add image add API</h3>
+          <h1>Webcrows learning React: Day 4</h1>
+          <h3>Please do not delete more than 1 image for testing. Use tags: Tag1, Tag2, etc</h3>
         </div>
         <main>
           {this.props.children}

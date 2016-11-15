@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-// Ambuj start
 var mongojs = require("mongojs");
 var db = mongojs('mongodb://webcrows:umncsfall16@ds019068.mlab.com:19068/webcrowsdb', ['userInfo','postDetail']);
 
@@ -125,48 +124,14 @@ router.get('/signUpX/:userId/:userName/:userEmail/:userPass/:userTags', function
   db.userInfo.insert({userId: userid, userName: username, userEmail: useremail, userPass: userpass, userTags: tempString}, function(err, noOfInsertedDocs){
     if (err)
     {
-      console.log('failed spectacularly');
       res.status(404).send('could not insert ');
     }
     else
     {
-      console.log('inserted into db');
       var foo = {flag: 1};
       res.send(foo);
     }
   });
-});
-
-// Ambuj end
-
-var movies = require('../data/movies.json')
-
-// allow easy lookup by id
-var moviesById = {}
-movies.movieList.map(function(movie) {
-  moviesById[movie.movieId] = movie
-})
-
-/* GET example. */
-router.get('/example', function(req, res, next) {
-  var foo = {
-    message: 'hello from express!'
-  }
-  res.send(foo);
-});
-
-router.get('/movies', function(req, res, next) {
-  res.send(movies);
-});
-
-router.get('/movies/:id', function(req, res, next) {
-  var movie = moviesById[req.params.id]
-  if (movie) {
-    res.send(movie)
-  } else {
-    res.status(404).send('movie id %d not found', req.params.id);
-  }
-
 });
 
 module.exports = router;

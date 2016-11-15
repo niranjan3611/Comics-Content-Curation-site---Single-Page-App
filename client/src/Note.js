@@ -21,7 +21,6 @@ var Note = React.createClass({
                 </span>
             </div>
         )
-
     }
 })
 
