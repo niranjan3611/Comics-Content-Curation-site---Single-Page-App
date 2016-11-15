@@ -3,10 +3,32 @@ import { Link } from 'react-router'
 import request from 'superagent';
 import Note from './Note';
 
+var SearchBar = React.createClass({
+  handleChange() {
+    this.props.onUserInput(
+      this.refs.filterTextInput.value,
+    );
+  },
+
+render() {
+  return (
+    <form>
+      <input
+        type="text"
+        placeholder="Search..."
+        value={this.props.filterText}
+        ref="filterTextInput"
+        onChange={this.handleChange}
+      />
+    </form>
+    );
+  }
+})
+
 var Board = React.createClass({
     getInitialState() {
         return {
-            notes: ['']
+            notes: [''], filterText: ''
         }
     },
     componentDidMount() {
@@ -49,15 +71,36 @@ var Board = React.createClass({
                   {note.postPic}
                 </Note>)
     },
+    handleUserInput(filterText) {
+      this.setState({
+        filterText: filterText,
+      });
+    },
     render() {
+      var filteredNotes = []
+      this.state.notes.forEach((note) => {
+        var notevar = "" + note.postTag
+        if (notevar.indexOf(this.state.filterText) === -1) {
+          return;
+        }
+        else {
+          filteredNotes.push(note);
+        }
+      });
         return (
+          <div>
+          <SearchBar
+            filterText={this.state.filterText}
+            onUserInput={this.handleUserInput}
+          />
             <div className="wrapper">
             <div className="columns">
             <div className='board'>
-                   {this.state.notes.map(this.eachNote)}
+                   {filteredNotes.map(this.eachNote)}
                 </div>
                 </div>
                 </div>
+            </div>
                 )
     }
 })
