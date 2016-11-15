@@ -14,7 +14,7 @@ render((
     <Route component={MainLayout}>
       <Route path="/" component={Login}/>
       <Route path="/signup" component={Signup}/>
-      <Route path="/explore" component={Board}/>
+      <Route path="/explore/:userId" component={Board}/>
       <Route path="pins/:postId" component={PinDetails}/>
       <Route path="/user/:userId" component={UserPage}/>
     </Route>

@@ -15,7 +15,7 @@ render() {
     <form>
       <input
         type="text"
-        placeholder="Tag Search..."
+        placeholder="Title Search..."
         value={this.props.filterText}
         ref="filterTextInput"
         onChange={this.handleChange}
@@ -63,11 +63,25 @@ var Board = React.createClass({
         var notes = this.state.notes.filter(note => note.postId !== id)
         this.setState({notes})
     },
+    like (id){
+      request
+        .post('/api/like/'+id)
+        .send({ name: 'Manny', species: 'cat' })
+        .set('Accept', 'application/json')
+        .end(function(err, res){
+          if (err || !res.ok) {
+            alert('Oh no! error');
+          } else {
+            alert('Liked Post');
+          }
+        });
+    },
     eachNote(note) {
         return (<Note key={note.postId}
                       id={note.postId}
-                      title={note.postTitle}
-                      onRemove={this.remove}>
+                      post={note}
+                      onRemove={this.remove}
+                      onLike={this.like}>
                   {note.postPic}
                 </Note>)
     },
@@ -79,7 +93,7 @@ var Board = React.createClass({
     render() {
       var filteredNotes = []
       this.state.notes.forEach((note) => {
-        var notevar = "" + note.postTag
+        var notevar = "" + note.postTitle
         if (notevar.toLowerCase().indexOf(this.state.filterText.toLowerCase()) === -1) {
           return;
         }
@@ -89,6 +103,7 @@ var Board = React.createClass({
       });
         return (
           <div>
+          <Link to={`/user/${this.props.routeParams.userId}`}><h2>My feed</h2></Link>
           <br/>
           <SearchBar
             filterText={this.state.filterText}
