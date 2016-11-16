@@ -40,6 +40,28 @@ router.get('/tagsearch/:tagId', function(req, res, next) {
   });
 });
 
+router.get('/userposts/:userId', function(req, res, next) {
+  var userId = req.params.userId;
+  db.postDetail.find({postUser: userId}).sort({postLike: -1}).toArray(function(err, result) {
+    if(err)
+    {
+      console.log('error')
+      res.status(404).send('invalid user ', req.params.userId);
+    }
+    else if(result.length)
+    {
+      console.log('Found some results')
+      var foo = {userPosts: result}
+      res.send(foo);
+    }
+    else
+    {
+        console.log('0 results')
+        res.status(404).send('invalid user ', req.params.userId);
+    }
+  });
+});
+
 router.get('/explore', function(req, res, next) {
   db.postDetail.find({}).sort({postLike: -1}).toArray(function(err, result) {
       if(err)

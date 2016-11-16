@@ -104,6 +104,7 @@ var Board = React.createClass({
         return (
           <div>
           <Link to={`/user/${this.props.routeParams.userId}`}><h2>My feed</h2></Link>
+          <Link to={`/myposts/${this.props.routeParams.userId}`}><h2>My Posts</h2></Link>
           <br/>
           <SearchBar
             filterText={this.state.filterText}

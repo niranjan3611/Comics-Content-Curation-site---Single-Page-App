@@ -8,6 +8,7 @@ import Board from './Board'
 import MainLayout from './MainLayout'
 import PinDetails from './PinDetails'
 import UserPage from './UserPage'
+import MyPosts from './MyPosts'
 
 render((
   <Router history={browserHistory}>
@@ -17,6 +18,7 @@ render((
       <Route path="/explore/:userId" component={Board}/>
       <Route path="pins/:postId" component={PinDetails}/>
       <Route path="/user/:userId" component={UserPage}/>
+      <Route path="/myposts/:userId" component={MyPosts}/>
     </Route>
   </Router>
 ), document.getElementById('react-container'))
