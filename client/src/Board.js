@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router'
 import request from 'superagent';
 import Note from './Note';
+import NavigationBar from './NavigationBar'
 
 var SearchBar = React.createClass({
   handleChange() {
@@ -95,11 +96,17 @@ var Board = React.createClass({
           filteredNotes.push(note);
         }
       });
+      var myfeedlink = "/user/"+this.props.routeParams.userId
+      var mypostslink = "/myposts/"+this.props.routeParams.userId
+      var explorelink = "/explore/"+this.props.routeParams.userId
+      var addcontentlink = "/add/"+this.props.routeParams.userId
         return (
           <div>
-          <Link to={`/user/${this.props.routeParams.userId}`}><h2>My feed</h2></Link>
-          <Link to={`/myposts/${this.props.routeParams.userId}`}><h2>My Posts</h2></Link>
-          <Link to={`/add/${this.props.routeParams.userId}`}><h2>Add new content</h2></Link>
+          <NavigationBar
+              explorelink={explorelink}
+              myfeedlink={myfeedlink}
+              mypostslink={mypostslink}
+              addcontentlink={addcontentlink} />
           <br/>
           <SearchBar
             filterText={this.state.filterText}

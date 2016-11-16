@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import request from 'superagent';
+import NavigationBar from './NavigationBar'
 
 class Add extends React.Component {
 
@@ -85,11 +86,17 @@ class Add extends React.Component {
   }
 
   render() {
+    var myfeedlink = "/user/"+this.props.routeParams.userId
+    var mypostslink = "/myposts/"+this.props.routeParams.userId
+    var explorelink = "/explore/"+this.props.routeParams.userId
+    var addcontentlink = "/add/"+this.props.routeParams.userId
     return (
       <div>
-      <Link to={`/user/${this.props.routeParams.userId}`}><h2>My feed</h2></Link>
-      <Link to={`/myposts/${this.props.routeParams.userId}`}><h2>My Posts</h2></Link>
-      <Link to={`/explore/${this.props.routeParams.userId}`}><h2>Explore</h2></Link>
+      <NavigationBar
+          explorelink={explorelink}
+          myfeedlink={myfeedlink}
+          mypostslink={mypostslink}
+          addcontentlink={addcontentlink} />
       <br />
       <p>Please use URLs from http://www.gocomics.com/explore/comics. Call Ambuj in case of queries</p>
       <form onSubmit={this.handleAddSubmit}>

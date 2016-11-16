@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router'
 import request from 'superagent';
 import NoteEdit from './NoteEdit';
+import NavigationBar from './NavigationBar'
 
 var MyPosts = React.createClass ({
   getInitialState() {
@@ -47,11 +48,17 @@ var MyPosts = React.createClass ({
               </NoteEdit>)
   },
   render(){
+    var myfeedlink = "/user/"+this.props.routeParams.userId
+    var mypostslink = "/myposts/"+this.props.routeParams.userId
+    var explorelink = "/explore/"+this.props.routeParams.userId
+    var addcontentlink = "/add/"+this.props.routeParams.userId
     return (
       <div>
-      <Link to={`/explore/${this.props.routeParams.userId}`}><h2>Explore</h2></Link>
-      <Link to={`/user/${this.props.routeParams.userId}`}><h2>My feed</h2></Link>
-      <Link to={`/add/${this.props.routeParams.userId}`}><h2>Add new content</h2></Link>
+      <NavigationBar
+          explorelink={explorelink}
+          myfeedlink={myfeedlink}
+          mypostslink={mypostslink}
+          addcontentlink={addcontentlink} />
       <div className="wrapper">
       <div className="columns">
       <div className='board'>
