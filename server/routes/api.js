@@ -177,4 +177,31 @@ router.post('/like', function(req, res, next)
   });
 });
 
+router.post('/addX', function(req, res, next){
+  var posttitle = req.body.postTitle;
+  var postdetail = req.body.postDetail;
+  var postpic = req.body.postPic;
+  var posturl = req.body.postURL;
+  var postuser = req.body.postUser;
+  var posttag = [];
+  var postlike = [];
+  posttag.push(req.body.postTag);
+  var oldPostId = db.postDetail.find().sort({postId:-1}).limit(1).toArray(function(err, oldcounter) {
+    var postid = oldcounter[0].postId + 1;
+    db.postDetail.insert({postId: postid, postTitle: posttitle, postDetail: postdetail, postPic: postpic, postURL: posturl, postUser: postuser, postTag: posttag, postLike: postlike, postLikenum: 0}, function(err, noOfInsertedDocs){
+      if (err)
+      {
+        res.status(404).send('could not insert ');
+      }
+      else
+      {
+        console.log('inserted successfully in postDetail');
+        var foo = {flag: 1};
+        res.send(foo);
+      }
+    });
+  });
+});
+
+
 module.exports = router;

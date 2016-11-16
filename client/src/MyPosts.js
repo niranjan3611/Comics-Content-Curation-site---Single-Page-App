@@ -51,6 +51,7 @@ var MyPosts = React.createClass ({
       <div>
       <Link to={`/explore/${this.props.routeParams.userId}`}><h2>Explore</h2></Link>
       <Link to={`/user/${this.props.routeParams.userId}`}><h2>My feed</h2></Link>
+      <Link to={`/add/${this.props.routeParams.userId}`}><h2>Add new content</h2></Link>
       <div className="wrapper">
       <div className="columns">
       <div className='board'>
