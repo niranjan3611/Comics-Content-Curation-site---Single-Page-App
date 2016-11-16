@@ -38,6 +38,10 @@ var UserPage = React.createClass({
               else {
                 addnotes.push.apply(addnotes, res.body.tagPosts)
               }
+              function mycomparator(a,b) {
+                  return parseInt(b.postLike, 10) - parseInt(a.postLike, 10);
+                }
+              addnotes.sort(mycomparator);
               self.setState({notes: addnotes});
             });
          });
@@ -56,6 +60,10 @@ var UserPage = React.createClass({
           alert('Liked Post');
         }
       });
+  },
+  remove(id) {
+      var notes = this.state.notes.filter(note => note.postId !== id)
+      this.setState({notes})
   },
   eachNote(note) {
       return (<Note key={note.postId}

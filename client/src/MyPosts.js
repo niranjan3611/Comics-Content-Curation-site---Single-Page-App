@@ -1,13 +1,29 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router'
 import request from 'superagent';
-import Note from './Note';
+import NoteEdit from './NoteEdit';
 
 var MyPosts = React.createClass ({
   getInitialState() {
       return {
           notes: ['']
       }
+  },
+  delete(id){
+    var self = this;
+    request
+     .get('/api/delete/'+id)
+     .set('Accept', 'application/json')
+     .end(function(err, res) {
+       console.log('After API call')
+       if (err || !res.ok) {
+         console.log('Oh no! error', err);
+       } else {
+         alert('Post Deleted');
+       }
+     });
+     var notes = this.state.notes.filter(note => note.postId !== id)
+     this.setState({notes})
   },
   componentDidMount() {
     var self = this;
@@ -22,27 +38,13 @@ var MyPosts = React.createClass ({
        }
      });
   },
-  like (id){
-    request
-      .post('/api/like/'+id)
-      .send({ name: 'Manny', species: 'cat' })
-      .set('Accept', 'application/json')
-      .end(function(err, res){
-        if (err || !res.ok) {
-          alert('Oh no! error');
-        } else {
-          alert('Liked Post');
-        }
-      });
-  },
   eachNote(note) {
-      return (<Note key={note.postId}
+      return (<NoteEdit key={note.postId}
                     id={note.postId}
                     post={note}
-                    onRemove={this.remove}
-                    onLike={this.like}>
+                    onDelete={this.delete}>
                 {note.postPic}
-              </Note>)
+              </NoteEdit>)
   },
   render(){
     return (

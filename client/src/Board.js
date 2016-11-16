@@ -45,21 +45,6 @@ var Board = React.createClass({
        });
     },
     remove(id) {
-        console.log('called remove function')
-        // Ambuj start
-        var self = this;
-        request
-         .get('/api/delete/'+id)
-         .set('Accept', 'application/json')
-         .end(function(err, res) {
-           console.log('After API call')
-           if (err || !res.ok) {
-             console.log('Oh no! error', err);
-           } else {
-             console.log('Delete API call successfull ');
-           }
-         });
-         // Ambuj end
         var notes = this.state.notes.filter(note => note.postId !== id)
         this.setState({notes})
     },
