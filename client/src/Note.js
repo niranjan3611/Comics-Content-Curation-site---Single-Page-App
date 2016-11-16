@@ -12,8 +12,9 @@ var Note = React.createClass({
     like(){
       var likelist = []
       var self= this
+      var appendid = this.props.id.toString();
       request
-       .get('/api/pins/display/'+this.props.id)
+       .get('/api/pins/display/'+appendid)
        .set('Accept', 'application/json')
        .end(function(err, res) {
          if (err || !res.ok) {

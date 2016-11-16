@@ -81,7 +81,7 @@ router.get('/explore', function(req, res, next) {
 });
 
 router.get('/pins/display/:postId', function(req, res, next) {
-  var postid = req.params.postId.parseInt();
+  var postid = parseInt(req.params.postId);
   db.postDetail.find({postId: postid}).toArray(function(err, result) {
     if(err)
     {
