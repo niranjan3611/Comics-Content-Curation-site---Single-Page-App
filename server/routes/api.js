@@ -81,7 +81,7 @@ router.get('/explore', function(req, res, next) {
 });
 
 router.get('/pins/display/:postId', function(req, res, next) {
-  var postid = req.params.postId;
+  var postid = req.params.postId.parseInt();
   db.postDetail.find({postId: postid}).toArray(function(err, result) {
     if(err)
     {
@@ -99,7 +99,7 @@ router.get('/pins/display/:postId', function(req, res, next) {
 });
 
 router.get('/delete/:postId', function(req, res, next) {
-  var postid = req.params.postId;
+  var postid = req.params.postId.parseInt();
   db.postDetail.remove({postId: postid}, function(err, noOfRemovedDocs){
     if (err)
     {
