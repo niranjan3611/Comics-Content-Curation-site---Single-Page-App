@@ -39,7 +39,11 @@ var UserPage = React.createClass({
                 addnotes.push.apply(addnotes, res.body.tagPosts)
               }
               function mycomparator(a,b) {
-                  return parseInt(b.postLike, 10) - parseInt(a.postLike, 10);
+                  var some1 = []
+                  var some2 = []
+                  some1.push.apply(some1,a.postLike)
+                  some2.push.apply(some2,b.postLike)
+                  return parseInt(some2.length, 10) - parseInt(some1.length, 10);
                 }
               addnotes.sort(mycomparator);
               self.setState({notes: addnotes});
@@ -48,22 +52,31 @@ var UserPage = React.createClass({
        }
      });
   },
-  like (id){
-    request
-      .post('/api/like/'+id)
-      .send({ name: 'Manny', species: 'cat' })
-      .set('Accept', 'application/json')
-      .end(function(err, res){
-        if (err || !res.ok) {
-          alert('Oh no! error');
-        } else {
-          alert('Liked Post');
-        }
-      });
-  },
   remove(id) {
       var notes = this.state.notes.filter(note => note.postId !== id)
       this.setState({notes})
+  },
+  like (id, likelist){
+    if(likelist.includes(this.props.routeParams.userId)){
+      alert('You have already liked this')
+      console.log('Will return false')
+      return false;
+    }
+    else{
+      request
+        .post('/api/like/')
+        .send({ postId: id, user: this.props.routeParams.userId })
+        .set('Accept', 'application/json')
+        .end(function(err, res){
+          if (err || !res.ok) {
+            alert('Oh no! error');
+          } else {
+            alert('Liked Post');
+          }
+        });
+        console.log('Will return true')
+        return true;
+    }
   },
   eachNote(note) {
       return (<Note key={note.postId}

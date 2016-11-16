@@ -23,7 +23,7 @@ router.get('/userpage/:userId', function(req, res, next) {
 
 router.get('/tagsearch/:tagId', function(req, res, next) {
   var tagid = req.params.tagId;
-  db.postDetail.find({postTag: tagid}).sort({postLike: -1}).toArray(function(err, result) {
+  db.postDetail.find({postTag: tagid}).sort({postLikenum: -1}).toArray(function(err, result) {
     if(err)
     {
       res.status(404).send('invalid user ', req.params.userId);
@@ -42,7 +42,7 @@ router.get('/tagsearch/:tagId', function(req, res, next) {
 
 router.get('/userposts/:userId', function(req, res, next) {
   var userId = req.params.userId;
-  db.postDetail.find({postUser: userId}).sort({postLike: -1}).toArray(function(err, result) {
+  db.postDetail.find({postUser: userId}).sort({postLikenum: -1}).toArray(function(err, result) {
     if(err)
     {
       console.log('error')
@@ -63,7 +63,7 @@ router.get('/userposts/:userId', function(req, res, next) {
 });
 
 router.get('/explore', function(req, res, next) {
-  db.postDetail.find({}).sort({postLike: -1}).toArray(function(err, result) {
+  db.postDetail.find({}).sort({postLikenum: -1}).toArray(function(err, result) {
       if(err)
       {
         res.status(404).send('no posts found');
@@ -156,10 +156,11 @@ router.get('/signUpX/:userId/:userName/:userEmail/:userPass/:userTags', function
   });
 });
 
-router.post('/like/:postId', function(req, res, next)
+router.post('/like', function(req, res, next)
 {
-  var postid = req.params.postId;
-  db.postDetail.update({postId: postid}, {$inc: {postLike: 1}}, function(err, noUpdated){
+  var postid = req.body.postId;
+  var likeuser = req.body.user;
+  db.postDetail.update({postId: postid}, {$push: {postLike: likeuser}, $inc: {postLikenum: 1}}, function(err, noUpdated){
     if (err)
     {
       res.status(404).send('post not found ', req.params.postId);

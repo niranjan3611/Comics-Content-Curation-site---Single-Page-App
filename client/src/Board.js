@@ -48,18 +48,27 @@ var Board = React.createClass({
         var notes = this.state.notes.filter(note => note.postId !== id)
         this.setState({notes})
     },
-    like (id){
-      request
-        .post('/api/like/'+id)
-        .send({ name: 'Manny', species: 'cat' })
-        .set('Accept', 'application/json')
-        .end(function(err, res){
-          if (err || !res.ok) {
-            alert('Oh no! error');
-          } else {
-            alert('Liked Post');
-          }
-        });
+    like (id, likelist){
+      if(likelist.includes(this.props.routeParams.userId)){
+        alert('You have already liked this')
+        console.log('Will return false')
+        return false;
+      }
+      else{
+        request
+          .post('/api/like/')
+          .send({ postId: id, user: this.props.routeParams.userId })
+          .set('Accept', 'application/json')
+          .end(function(err, res){
+            if (err || !res.ok) {
+              alert('Oh no! error');
+            } else {
+              alert('Liked Post');
+            }
+          });
+          console.log('Will return true')
+          return true;
+      }
     },
     eachNote(note) {
         return (<Note key={note.postId}

@@ -4,16 +4,39 @@ import request from 'superagent';
 
 var Note = React.createClass({
     getInitialState() {
-        return {editing: false}
+        return {likes: this.props.post.postLikenum}
     },
     remove() {
         this.props.onRemove(this.props.id)
     },
     like(){
-      this.props.onLike(this.props.id)
+      var likelist = []
+      var self= this
+      request
+       .get('/api/pins/display/'+this.props.id)
+       .set('Accept', 'application/json')
+       .end(function(err, res) {
+         if (err || !res.ok) {
+           console.log('Oh no! error', err);
+         } else {
+           likelist.push.apply(likelist,res.body.postLike)
+         }
+         var flag = false;
+         flag = self.props.onLike(self.props.id, likelist)
+         console.log('received ',flag)
+         if(flag){
+           var num = self.state.likes;
+           num++;
+           console.log('New no. of likes ',num);
+           self.setState({likes: num}, function(){
+             console.log('State is now ',self.state.likes)
+           });
+         }
+       })
     },
     render() {
       var tags = []
+      var nooflikes = this.state.likes
       tags.push.apply(tags,this.props.post.postTag)
       return (
         <div className="pin">
@@ -24,7 +47,7 @@ var Note = React.createClass({
                 {tags.map((tag) =>
                   <i>#{tag} </i>
                 )}
-                <p> Likes: {this.props.post.postLike}</p>
+                <p> Likes: {nooflikes}</p>
                 <span>
                   <button onClick={this.like}>Like</button>
                   <button onClick={this.remove}>X</button>

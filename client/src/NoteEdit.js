@@ -9,9 +9,6 @@ var NoteEdit = React.createClass({
     delete() {
         this.props.onDelete(this.props.id)
     },
-    like(){
-      this.props.onLike(this.props.id)
-    },
     render() {
       var tags = []
       tags.push.apply(tags,this.props.post.postTag)
@@ -24,7 +21,7 @@ var NoteEdit = React.createClass({
                 {tags.map((tag) =>
                   <i>#{tag} </i>
                 )}
-                <p> Likes: {this.props.post.postLike}</p>
+                <p> Likes: </p>
                 <span>
                   <button onClick={this.delete}>Delete</button>
                 </span>
