@@ -1,5 +1,14 @@
 
 
+<<<<<<< HEAD
+=======
+- tulaj001@umn.edu
+- balan016@umn.edu
+- karup002@umn..edu
+- rich1044@umn.edu
+- nayan003@umn.edu
+- ...
+>>>>>>> 7168d4b39079a62c8f5e7d4c6b17ac1004e163c3
 
 
 <!DOCTYPE html>
