@@ -3,8 +3,9 @@ __Submitted by:__ _team_name_
 
 __Team members:__
 
-- username@umn.edu
-- username@umn.edu
+- tulaj001@umn.edu
+- balan016@umn.edu
+- karup005@umn..edu
 - ...
 
 __Heroku URL:__ _url_
