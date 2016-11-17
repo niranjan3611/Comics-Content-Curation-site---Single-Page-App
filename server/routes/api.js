@@ -254,6 +254,27 @@ router.post('/editX', function(req, res, next){
   });
 });
 
+router.post('/appendtags', function(req, res, next)
+{
+  var taglist = req.body.tags;
+  var taguser = req.body.user;
+  db.userInfo.update({userId: taguser}, {$addToSet: {userTags: {$each:taglist}}}, function(err, noUpdated){
+    if (err)
+    {
+      res.send({flag: 0});
+    }
+    else if (noUpdated)
+    {
+      var foo = {flag: 1};
+      res.send(foo);
+    }
+    else
+    {
+      res.send({flag: 0});
+    }
+  });
+});
+
 
 
 module.exports = router;
