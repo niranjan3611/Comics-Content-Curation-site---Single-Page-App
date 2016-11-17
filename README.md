@@ -28,18 +28,24 @@ We wanted to implemented a react SPA with a wide spectrum of functionalities. Fo
    - Search by title
    
 ###### Multiple user support: 
-   1) Each user can specify his interests
-   2) Content related to user's interest will be shown in his personal feed
-   3) User can also view the entire content in the general feed
-   4) User can broaden his range of interests to inlcude additional content
+
+   - Each user can specify his interests
+   - Content related to user's interest will be shown in his personal feed
+   - User can also view the entire content in the general feed
+   - User can broaden his range of interests to inlcude additional content
+
 ###### Annotate the content with additional information:
-   1) Implemented like feature
-   2) Each user can only like the content once
+
+   - Implemented like feature
+   - Each user can only like the content once
+   
 ###### Edit content:
-   1) User can edit the title, detail and URL of content
+   - User can edit the title, detail and URL of content
+   
 ###### Multiple modes of content deletion:
-   1) Temporary deletion from user's personal feed
-   2) Permanent deletion (only the owner of the content can delete it permanently)
+   - Temporary deletion from user's personal feed
+   - Permanent deletion (only the owner of the content can delete it permanently)
+
 ###### Local user authentication
 
 __Argument of execution (optional, maximum 100 words):__
@@ -60,11 +66,6 @@ Some sites that can serve as inspiration:
 - pocket and delicious: users save and organize URLs
 - zotero: users save academic articles, organize them into groups, tag them, and export them in various formats
 - reddit and hackernews: users post, vote on, and discuss URLs
-
-
-
-
-
 
 Generally, these sites allow users to (a) collect content into collections, lists, or tags, (b) annotate the content with additional information, and (c) browse and search for other information on the site.
 
