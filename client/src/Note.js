@@ -58,8 +58,8 @@ var Note = React.createClass({
                   :
                   <span/>
                   }
-                  <button onClick={this.like}><i className="fa fa-thumbs-up thumbsup"></i></button>
-                  <button onClick={this.remove}><i className="fa fa-times crows-delete"></i></button>
+                  <button className="showright" onClick={this.like}><i className="fa fa-thumbs-up thumbsup"></i></button>
+                  <button className="showright" onClick={this.remove}><i className="fa fa-times crows-delete"></i></button>
                 </span>
             </div>
         )

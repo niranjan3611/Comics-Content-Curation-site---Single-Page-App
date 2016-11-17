@@ -155,7 +155,7 @@ handleAddSubmitimageurl(event){
           mypostslink={mypostslink}
           addcontentlink={addcontentlink} />
       <br />
-      <p>Please use URLs from http://www.gocomics.com/explore/comics. Call Ambuj in case of queries</p>
+      <p>Please use URLs from http://www.gocomics.com/explore/comics.</p>
 
 
       <form className="chooseinput" action="">

@@ -219,7 +219,7 @@ body {
     background-size: 20px 20px;
 }
 
-p {
+p, form {
     color: #FFFF00;
     font-size: 1.2em;
 }
@@ -288,7 +288,6 @@ li a.active {
 .add-interest {
     display: block;
     width:120px;
-    margin:10px auto;
     padding:3px 3px;
     text-align:center;
     background:#29606F;
