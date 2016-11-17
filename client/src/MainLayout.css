@@ -262,7 +262,7 @@ li a.active {
     text-decoration: none;
 }
 
-li.showright {
+.showright {
   float : right
 }
 
