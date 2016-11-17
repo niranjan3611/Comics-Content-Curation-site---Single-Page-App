@@ -21,9 +21,12 @@ We wanted to implemented a react SPA with a wide spectrum of functionalities. Fo
    - Via URL parsing (from http://www.gocomics.com/)
    
    - Via direct image upload
+   
 ###### Multi-tier search feature:
-   1) Search by tags
-   2) Search by title
+   - Search by tags
+   
+   - Search by title
+   
 ###### Multiple user support: 
    1) Each user can specify his interests
    2) Content related to user's interest will be shown in his personal feed
