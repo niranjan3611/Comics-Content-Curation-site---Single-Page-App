@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var mongojs = require("mongojs");
-var db = mongojs('mongodb://webcrows:umncsfall16@ds019068.mlab.com:19068/webcrowsdb', ['userInfo','postDetail']);
+var db = mongojs('mongodb://webcrows:umncsfall16@ds019068.mlab.com:19068/webcrowsdb', ['userInfo','postDetail','tags']);
 
 router.get('/userpage/:userId', function(req, res, next) {
   var userid = req.params.userId;
@@ -13,6 +13,24 @@ router.get('/userpage/:userId', function(req, res, next) {
     else if(result.length)
     {
       res.send(result[0]);
+    }
+    else
+    {
+        res.send({flag: 0});
+    }
+  });
+});
+
+router.get('/listtags', function(req, res, next) {
+  db.tags.find({}).toArray(function(err,result){
+    if(err)
+    {
+      res.send({flag: 0});
+    }
+    else if(result.length)
+    {
+      var foo = {alltags: result};
+      res.send(foo);
     }
     else
     {

@@ -1,5 +1,5 @@
 # Module 3 group project #
-__Submitted by:__ _team_name_
+__Submitted by:__ WebCrows
 
 __Team members:__
 

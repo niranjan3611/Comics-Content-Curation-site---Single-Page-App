@@ -3,12 +3,13 @@ import { Link } from 'react-router'
 import request from 'superagent';
 import Note from './Note';
 import NavigationBar from './NavigationBar'
+import SearchBar from './SearchBar'
 
 
 var UserPage = React.createClass({
   getInitialState() {
       return {
-          notes: ['']
+          notes: [''], filterText: '', tagset: ['']
       }
   },
   componentDidMount() {
@@ -23,6 +24,7 @@ var UserPage = React.createClass({
        }
        else {
          tags = res.body.userTags;
+         self.setState({tagset: tags})
        }
        if(tags.length){
          console.log('Going to print tags')
@@ -89,23 +91,67 @@ var UserPage = React.createClass({
                 {note.postPic}
               </Note>)
   },
+  handleUserInput(filterText) {
+    this.setState({
+      filterText: filterText,
+    });
+  },
+  filter(tag){
+    console.log('Will filter ',tag)
+    var self = this
+    request
+     .get('/api/tagsearch/'+tag)
+     .set('Accept', 'application/json')
+     .end(function(err, res) {
+       if (err || !res.ok) {
+         console.log('Oh no! error', err);
+       }
+       else {
+         self.setState({notes: res.body.tagPosts})
+       }
+     });
+  },
   render(){
     console.log(this.state.notes)
     var myfeedlink = "/user/"+this.props.routeParams.userId
     var mypostslink = "/myposts/"+this.props.routeParams.userId
     var explorelink = "/explore/"+this.props.routeParams.userId
     var addcontentlink = "/add/"+this.props.routeParams.userId
+    var filteredNotes = []
+    this.state.notes.forEach((note) => {
+      var notevar = "" + note.postTitle
+      if (notevar.toLowerCase().indexOf(this.state.filterText.toLowerCase()) === -1) {
+        return;
+      }
+      else {
+        filteredNotes.push(note);
+      }
+    });
     return(
       <div>
       <NavigationBar
           explorelink={explorelink}
           myfeedlink={myfeedlink}
           mypostslink={mypostslink}
-          addcontentlink={addcontentlink} />
+          addcontentlink={addcontentlink}
+          activepagename = {"Home"} />
+      <br/>
+      <SearchBar
+        filterText={this.state.filterText}
+        onUserInput={this.handleUserInput}
+      />
+      <h1>Welcome {this.props.routeParams.userId}. Here is your feed.</h1>
+      Tags on this page:
+      {this.state.tagset.map((tag) =>
+        <span>
+        <button onClick={() => this.filter(tag)}>{tag}</button>
+        <span> </span>
+        </span>
+      )}
       <div className="wrapper">
       <div className="columns">
       <div className='board'>
-             {this.state.notes.map(this.eachNote)}
+             {filteredNotes.map(this.eachNote)}
       </div>
       </div>
       </div>

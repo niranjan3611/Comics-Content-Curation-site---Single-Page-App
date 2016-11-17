@@ -3,34 +3,14 @@ import { Link } from 'react-router'
 import request from 'superagent';
 import Note from './Note';
 import NavigationBar from './NavigationBar'
+import SearchBar from './SearchBar'
 
-var SearchBar = React.createClass({
-  handleChange() {
-    this.props.onUserInput(
-      this.refs.filterTextInput.value,
-    );
-  },
-
-render() {
-  return (
-    <form className="searchForm form-horizontal">
-      <input className="form-control"
-        type="text"
-        placeholder="Tag Search..."
-        value={this.props.filterText}
-        ref="filterTextInput"
-        onChange={this.handleChange}
-      />
-    </form>
-    );
-  }
-})
 
 
 var Board = React.createClass({
     getInitialState() {
         return {
-            notes: [''], filterText: ''
+            notes: [''], filterText: '', tagset: ['']
         }
     },
     componentDidMount() {
@@ -45,6 +25,17 @@ var Board = React.createClass({
            self.setState({notes: res.body.allposts});
          }
        });
+       var self = this;
+       request
+        .get('/api/listtags')
+        .set('Accept', 'application/json')
+        .end(function(err, res) {
+          if (err || !res.ok) {
+            console.log('Oh no! error', err);
+          } else {
+            self.setState({tagset: res.body.alltags});
+          }
+        });
     },
     remove(id) {
         var notes = this.state.notes.filter(note => note.postId !== id)
@@ -88,6 +79,21 @@ var Board = React.createClass({
         filterText: filterText,
       });
     },
+    filter(tag){
+      console.log('Will filter ',tag)
+      var self = this
+      request
+       .get('/api/tagsearch/'+tag)
+       .set('Accept', 'application/json')
+       .end(function(err, res) {
+         if (err || !res.ok) {
+           console.log('Oh no! error', err);
+         }
+         else {
+           self.setState({notes: res.body.tagPosts})
+         }
+       });
+    },
     render() {
       var filteredNotes = []
       this.state.notes.forEach((note) => {
@@ -109,12 +115,20 @@ var Board = React.createClass({
               explorelink={explorelink}
               myfeedlink={myfeedlink}
               mypostslink={mypostslink}
-              addcontentlink={addcontentlink} />
+              addcontentlink={addcontentlink}
+              activepagename = {"Explore"} />
           <br/>
           <SearchBar
             filterText={this.state.filterText}
             onUserInput={this.handleUserInput}
           />
+          Tags on this page:
+          {this.state.tagset.map((tag) =>
+            <span>
+            <button onClick={() => this.filter(tag.tagName)}>{tag.tagName}</button>
+            <span> </span>
+            </span>
+          )}
             <div className="wrapper">
             <div className="columns">
             <div className='board'>
