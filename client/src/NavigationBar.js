@@ -25,6 +25,7 @@ var NavigationBar = React.createClass({
           <i className="fa fa-plus crows-add-fa"></i></a>
         </li>
         <li className="showright user-li"><a className={this.checkactive("MyPost")} href={this.props.mypostslink}>{username}</a></li>
+        <li className="showright user-li"><a href={'/'}>Logout</a></li>
       </ul>
     )
   }
