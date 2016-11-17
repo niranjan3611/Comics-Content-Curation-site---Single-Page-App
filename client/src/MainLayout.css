@@ -138,7 +138,7 @@ div.note > textarea {
   }
 }
 
-.MainLayout__header {
+/*.MainLayout__header {
   background-color: #4B3621;
   height: 170px;
   padding: 20px;
@@ -146,10 +146,9 @@ div.note > textarea {
   border-radius: 15px;
   font-family: Glober;
 }
-
+*/
 .jbanner {
     background-image: url('../assets/img/captain-banner.jpg');
-    /*background-image: url('http://bit.ly/2fYTdqg');*/
     background-size: cover;
     margin: 2px 0px 5px 0;
     height: 250px;
@@ -177,15 +176,7 @@ div.note > textarea {
   
 }
 
-.MainLayout {
-   /* background:
-        radial-gradient(black 15%, transparent 16%) 0 0,
-        radial-gradient(black 15%, transparent 16%) 8px 8px,
-        radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
-        radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
-    background-color:#282828;
-    background-size:16px 16px;*/
-    
+body {
     background:
         linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
         linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
@@ -195,9 +186,6 @@ div.note > textarea {
         linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
     background-color: #131313;
     background-size: 20px 20px;
-    /*
-    background-image: url('../assets/img/bg.png');
-    background-size: 100%;*/
 }
 
 h1,h3 {
