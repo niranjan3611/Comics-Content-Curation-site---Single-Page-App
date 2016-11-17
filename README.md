@@ -58,8 +58,8 @@ Each call from client to the server is handled through an API and we wrote 13 AP
 The project code is easy to understand and maintain.  
 
 ## Website rendering on iPhone6 ##
+![alt text](file:///home/nayanambuj/Desktop/websiteOniPhone7.jpg "Website on iPhone6")
 
-file:///home/nayanambuj/Desktop/websiteOniPhone7.jpg
 ## Description ##
 The group project for module 3 is to create a website for collecting and organizing content.
 
