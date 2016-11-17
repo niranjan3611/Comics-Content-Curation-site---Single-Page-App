@@ -9,6 +9,9 @@ var NoteEdit = React.createClass({
     delete() {
         this.props.onDelete(this.props.id)
     },
+    edit(){
+        window.location = "/edit/"+this.props.id
+    },
     render() {
       var tags = []
       tags.push.apply(tags,this.props.post.postTag)
@@ -23,6 +26,7 @@ var NoteEdit = React.createClass({
                 )}
                 <p> Likes: </p>
                 <span>
+                  <button onClick={this.edit}>Edit</button>
                   <button onClick={this.delete}>Delete</button>
                 </span>
             </div>

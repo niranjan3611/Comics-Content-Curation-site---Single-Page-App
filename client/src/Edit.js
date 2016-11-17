@@ -27,7 +27,7 @@ var Edit = React.createClass({
          self.setState({title: res.body.postTitle});
          self.setState({detail: res.body.postDetail});
          self.setState({url: res.body.postURL});
-         self.setState({userid: res.body.userId});
+         self.setState({userid: res.body.postUser});
        }
      });
   },
