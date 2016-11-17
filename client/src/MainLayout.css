@@ -172,6 +172,10 @@ div.note > textarea {
   max-width: 800px;
 }
 
+.pin-shell {
+  color: black !important;
+}
+
 .tag-span {
   padding-left: 5%
 }

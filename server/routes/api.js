@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var mongojs = require("mongojs");
-var db = mongojs('mongodb://webcrows:umncsfall16@ds019068.mlab.com:19068/webcrowsdb', ['userInfo','postDetail','tags']);
+var db = mongojs('mongodb://webcrows:umncsfall16@ec2-54-175-174-41.compute-1.amazonaws.com:21/webcrowsdb', ['userInfo','postDetail','tags']);
 
 router.get('/userpage/:userId', function(req, res, next) {
   var userid = req.params.userId;
