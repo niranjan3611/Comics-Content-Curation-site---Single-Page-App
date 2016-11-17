@@ -164,7 +164,14 @@ div.note > textarea {
 }
 
 .pin-shell img {
+  margin: 0 auto;
+  text-align: center;
+  max-height: 600px;
+  max-width: 800px;
+}
 
+.tag-span {
+  padding-left: 5%
 }
 
 body {
@@ -177,6 +184,11 @@ body {
         linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
     background-color: #131313;
     background-size: 20px 20px;
+}
+
+p {
+    color: #FFFF00;
+    font-size: 1.2em;
 }
 
 h1,h3 {
@@ -228,4 +240,9 @@ li.showright {
 
 .user-li {
   padding-right: 30px;
+}
+
+.thumbsup {
+  font-size: 20px;
+  color: blue;
 }
