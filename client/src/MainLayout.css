@@ -164,7 +164,9 @@ div.note > textarea {
 }
 
 .pin-shell img {
-  margin: 0 auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   text-align: center;
   max-height: 600px;
   max-width: 800px;

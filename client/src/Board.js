@@ -43,8 +43,6 @@ var Board = React.createClass({
     },
     like (id, likelist){
       if(likelist.includes(this.props.routeParams.userId)){
-        alert('You have already liked this')
-        console.log('Will return false')
         return false;
       }
       else{
@@ -56,7 +54,7 @@ var Board = React.createClass({
             if (err || !res.ok) {
               alert('Oh no! error');
             } else {
-              alert('Liked Post');
+              ;
             }
           });
           console.log('Will return true')
@@ -88,7 +86,7 @@ var Board = React.createClass({
           if (err || !res.ok) {
             alert('Oh no! error');
           } else {
-            alert('Appended. Check DB');
+            ;
           }
         });
     },

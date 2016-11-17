@@ -68,7 +68,6 @@ handleAddSubmitimageurl(event){
                     var insertionCheck = res.body.flag;
                     if(insertionCheck==1)
                     {
-                      alert('post added !');
                       self.setState({tag: ''});
                       self.setState({url: ''});
                       self.setState({detail: ''});
@@ -118,11 +117,9 @@ handleAddSubmitimageurl(event){
                       var insertionCheck = res.body.flag;
                       if(insertionCheck==1)
                       {
-                        alert('post added !');
                         self.setState({tag: ''});
                         self.setState({url: ''});
                         self.setState({detail: ''});
-                      //  console.log("\n" + this.state.url+"  "+this.state.tag+ "  "+ this.state.detail);
                       }
                       else {
                          alert('insertion failed ');

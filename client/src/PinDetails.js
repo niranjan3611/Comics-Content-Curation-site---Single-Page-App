@@ -35,7 +35,7 @@ var PinDetails = React.createClass({
           mypostslink={mypostslink}
           addcontentlink={addcontentlink} />
         <br />
-          <img src = {this.state.pin.postPic} />
+          <img className="pin-center" src = {this.state.pin.postPic} />
         <p><b>Title: </b>{this.state.pin.postTitle}</p>
         <p><b>Detail: </b>{this.state.pin.postDetail}</p>
         <p><b>Uploader: </b>{this.state.pin.postUser}</p>

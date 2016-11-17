@@ -21,7 +21,7 @@ var MyPosts = React.createClass ({
        if (err || !res.ok) {
          console.log('Oh no! error', err);
        } else {
-         alert('Post Deleted');
+         ;
        }
      });
      var notes = this.state.notes.filter(note => note.postId !== id)

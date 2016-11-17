@@ -63,16 +63,15 @@ var Edit = React.createClass({
     .set('Accept', 'application/json')
     .end(function(err, pqr) {
       if (err || !pqr.ok) {
-        //alert('Oh no! error', err);
         ;
       } else {
         var signUpCheck = pqr.body.flag;
         if(signUpCheck==1)
         {
-          alert('post edited');
+          ;
         }
         else {
-           alert('edit failed ');
+           ;
         }
       }
     });
