@@ -116,7 +116,8 @@ var Board = React.createClass({
               myfeedlink={myfeedlink}
               mypostslink={mypostslink}
               addcontentlink={addcontentlink}
-              activepagename = {"Explore"} />
+              activepagename = {"Explore"}
+              username = {this.props.routeParams.userId} />
           <br/>
           <SearchBar
             filterText={this.state.filterText}

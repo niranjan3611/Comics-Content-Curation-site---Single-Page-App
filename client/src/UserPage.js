@@ -134,7 +134,8 @@ var UserPage = React.createClass({
           myfeedlink={myfeedlink}
           mypostslink={mypostslink}
           addcontentlink={addcontentlink}
-          activepagename = {"Home"} />
+          activepagename = {"Home"}
+          username = {this.props.routeParams.userId}/>
       <br/>
       <SearchBar
         filterText={this.state.filterText}

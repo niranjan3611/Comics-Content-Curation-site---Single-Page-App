@@ -50,6 +50,7 @@ var Note = React.createClass({
                 )}
                 <p> Likes: {nooflikes}</p>
                 <span>
+                  <button>Add to my interests</button>
                   <button onClick={this.like}>Like</button>
                   <button onClick={this.remove}>X</button>
                 </span>
