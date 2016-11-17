@@ -224,5 +224,36 @@ router.post('/addX', function(req, res, next){
   });
 });
 
+router.post('/editX', function(req, res, next){
+  console.log('inside editX API');
+  var postid = parseInt(req.body.postId);
+  var posttitle = req.body.postTitle;
+  var postdetail = req.body.postDetail;
+  var posturl = req.body.postURL;
+  console.log('postid: ', postid);
+  console.log('posttitle: ', posttitle);
+  console.log('postdetail: ', postdetail);
+  console.log('posturl: ', posturl);
+
+  db.postDetail.update({postId: postid}, {$set: {postDetail: postdetail, postTitle: posttitle, postURL: posturl}}, function(err, noUpdated){
+    if (err)
+    {
+      console.log('Error');
+      res.end();
+    }
+    else if (noUpdated)
+    {
+      console.log('updated the value ');
+      res.end();
+    }
+    else
+    {
+      console.log('0 results');
+      res.end();
+    }
+  });
+});
+
+
 
 module.exports = router;
