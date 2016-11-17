@@ -41,6 +41,12 @@ We wanted to implemented a react SPA with a wide spectrum of functionalities. Fo
 __Argument of execution (optional, maximum 100 words):__
 _Briefly argue why this was a well executed project_
 
+We implemented all the functionalities that we planned at the time of project commencement. Paid sepecial attention to maintain the modular structure of the code. 
+
+Each call from client to the server is handled through an API and we wrote 13 APIs for this project. On the client side, lot of planning and effort went into implementing react components and their interaction with one another. 14 major react components were implemented to support all client facing functionalities. Database schema used in the project is well defined and can support future enhancements.
+
+The project code is easy to understand and maintain.  
+
 ## Description ##
 The group project for module 3 is to create a website for collecting and organizing content.
 
