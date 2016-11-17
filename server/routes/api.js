@@ -224,5 +224,57 @@ router.post('/addX', function(req, res, next){
   });
 });
 
+router.post('/editX', function(req, res, next){
+  console.log('inside editX API');
+  var postid = parseInt(req.body.postId);
+  var posttitle = req.body.postTitle;
+  var postdetail = req.body.postDetail;
+  var posturl = req.body.postURL;
+  console.log('postid: ', postid);
+  console.log('posttitle: ', posttitle);
+  console.log('postdetail: ', postdetail);
+  console.log('posturl: ', posturl);
+
+  db.postDetail.update({postId: postid}, {$set: {postDetail: postdetail, postTitle: posttitle, postURL: posturl}}, function(err, noUpdated){
+    if (err)
+    {
+      console.log('Error');
+      res.end();
+    }
+    else if (noUpdated)
+    {
+      console.log('updated the value ');
+      res.end();
+    }
+    else
+    {
+      console.log('0 results');
+      res.end();
+    }
+  });
+});
+
+router.post('/appendtags', function(req, res, next)
+{
+  var taglist = req.body.tags;
+  var taguser = req.body.user;
+  db.userInfo.update({userId: taguser}, {$addToSet: {userTags: {$each:taglist}}}, function(err, noUpdated){
+    if (err)
+    {
+      res.send({flag: 0});
+    }
+    else if (noUpdated)
+    {
+      var foo = {flag: 1};
+      res.send(foo);
+    }
+    else
+    {
+      res.send({flag: 0});
+    }
+  });
+});
+
+
 
 module.exports = router;

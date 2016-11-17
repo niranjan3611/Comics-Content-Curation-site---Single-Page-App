@@ -10,6 +10,7 @@ import PinDetails from './PinDetails'
 import UserPage from './UserPage'
 import MyPosts from './MyPosts'
 import Add from './Add'
+import Edit from './Edit'
 
 render((
   <Router history={browserHistory}>
@@ -17,10 +18,11 @@ render((
       <Route path="/" component={Login}/>
       <Route path="/signup" component={Signup}/>
       <Route path="/explore/:userId" component={Board}/>
-      <Route path="pins/:userId/:postId" component={PinDetails}/>
+      <Route path="/pins/:userId/:postId" component={PinDetails}/>
       <Route path="/user/:userId" component={UserPage}/>
       <Route path="/myposts/:userId" component={MyPosts}/>
       <Route path="/add/:userId" component={Add}/>
+      <Route path="/edit/:postId" component={Edit}/>
     </Route>
   </Router>
 ), document.getElementById('react-container'))

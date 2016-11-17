@@ -53,9 +53,13 @@ var Note = React.createClass({
                 )}
                 <p> Likes: {nooflikes}</p>
                 <span>
-                  <button onClick={this.addtagstouser}>Add to my interests</button>
+                  {this.props.flag ?
+                  <span onClick={this.addtagstouser} className="add-interest">Add to my interests</span>
+                  :
+                  <span/>
+                  }
                   <button onClick={this.like}><i className="fa fa-thumbs-up thumbsup"></i></button>
-                  <button onClick={this.remove}>X</button>
+                  <button onClick={this.remove}><i className="fa fa-times crows-delete"></i></button>
                 </span>
             </div>
         )
