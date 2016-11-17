@@ -204,7 +204,6 @@ h1,h3 {
   text-align: center;
 }
 
-
 ul {
     list-style-type: none;
     margin: 0;
@@ -237,4 +236,3 @@ li a.active {
 
 li.showright {
   float : right
-}
