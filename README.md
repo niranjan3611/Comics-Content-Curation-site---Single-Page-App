@@ -16,27 +16,27 @@ _Briefly argue why this was a technically ambitious project_
 
 We wanted to implemented a react SPA with a wide spectrum of functionalities. Following is the list of functionalities:
 
-## **Implementing fluid image grid for content display**
-## **Multiple modes of content import:**
-   1. Via URL parsing (from http://www.gocomics.com/)
-   2. Via direct image upload
-## **Multi-tier search feature:**
-   1. Search by tags
-   2. Search by title
-## **Multiple user support:** 
-   1. Each user can specify his interests
-   2. Content related to user's interest will be shown in his personal feed
-   3. User can also view the entire content in the general feed
-   4. User can broaden his range of interests to inlcude additional content
-## **Annotate the content with additional information:**
-   1. Implemented like feature
-   2. Each user can only like the content once
-## **Edit content:**
-   1. User can edit the title, detail and URL of content
-## **Multiple modes of content deletion:**
-   1. Temporary deletion from user's personal feed
-   2. Permanent deletion (only the owner of the content can delete it permanently)
-## **Local user authentication**
+#### Implementing fluid image grid for content display
+#### Multiple modes of content import:
+   1) Via URL parsing (from http://www.gocomics.com/)
+   2) Via direct image upload
+#### Multi-tier search feature:
+   1) Search by tags
+   2) Search by title
+#### Multiple user support: 
+   1) Each user can specify his interests
+   2) Content related to user's interest will be shown in his personal feed
+   3) User can also view the entire content in the general feed
+   4) User can broaden his range of interests to inlcude additional content
+#### Annotate the content with additional information:
+   1) Implemented like feature
+   2) Each user can only like the content once
+#### Edit content:
+   1) User can edit the title, detail and URL of content
+#### Multiple modes of content deletion:
+   1) Temporary deletion from user's personal feed
+   2) Permanent deletion (only the owner of the content can delete it permanently)
+#### Local user authentication
 
 __Argument of execution (optional, maximum 100 words):__
 _Briefly argue why this was a well executed project_
