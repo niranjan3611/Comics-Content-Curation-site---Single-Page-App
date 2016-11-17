@@ -9,7 +9,7 @@ __Team members:__
 - nayan003@umn.edu
 - rich1044@umn.edu
 
-__Heroku URL: https://modthreewc.herokuapp.com/
+__Heroku URL:__ https://modthreewc.herokuapp.com/
 
 __Argument of ambition (optional, maximum 100 words):__
 _Briefly argue why this was a technically ambitious project_
