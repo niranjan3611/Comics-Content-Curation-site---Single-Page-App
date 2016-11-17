@@ -81,7 +81,7 @@ var Board = React.createClass({
       console.log('Will append ',addtags,'to ',this.props.routeParams.userId)
       request
         .post('/api/appendtags/')
-        .send({ tag: id, user: this.props.routeParams.userId })
+        .send({ tag: addtags1, user: this.props.routeParams.userId })
         .set('Accept', 'application/json')
         .end(function(err, res){
           if (err || !res.ok) {
