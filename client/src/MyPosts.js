@@ -3,11 +3,12 @@ import { Link } from 'react-router'
 import request from 'superagent';
 import NoteEdit from './NoteEdit';
 import NavigationBar from './NavigationBar'
+import SearchBar from './SearchBar'
 
 var MyPosts = React.createClass ({
   getInitialState() {
       return {
-          notes: ['']
+          notes: [''], filterText: ''
       }
   },
   delete(id){
@@ -48,23 +49,46 @@ var MyPosts = React.createClass ({
                 {note.postPic}
               </NoteEdit>)
   },
+  handleUserInput(filterText) {
+    this.setState({
+      filterText: filterText,
+    });
+  },
   render(){
     var myfeedlink = "/user/"+this.props.routeParams.userId
     var mypostslink = "/myposts/"+this.props.routeParams.userId
     var explorelink = "/explore/"+this.props.routeParams.userId
     var addcontentlink = "/add/"+this.props.routeParams.userId
+    var filteredNotes = []
+    this.state.notes.forEach((note) => {
+      var notevar = "" + note.postTitle
+      if (notevar.toLowerCase().indexOf(this.state.filterText.toLowerCase()) === -1) {
+        return;
+      }
+      else {
+        filteredNotes.push(note);
+      }
+    });
     return (
       <div>
       <NavigationBar
           explorelink={explorelink}
           myfeedlink={myfeedlink}
           mypostslink={mypostslink}
-          addcontentlink={addcontentlink} />
+          addcontentlink={addcontentlink}
+          activepagename={"MyPost"}/>
           {this.state.notes.length ?
+            <div>
+            <br />
+            <SearchBar
+              filterText={this.state.filterText}
+              onUserInput={this.handleUserInput}
+            />
             <div className="wrapper">
             <div className="columns">
             <div className='board'>
-                   {this.state.notes.map(this.eachNote)}
+                   {filteredNotes.map(this.eachNote)}
+            </div>
             </div>
             </div>
             </div>
