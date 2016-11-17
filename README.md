@@ -5,8 +5,9 @@ __Team members:__
 
 - tulaj001@umn.edu
 - balan016@umn.edu
-- karup005@umn..edu
-- ...
+- karup002@umn.edu
+- nayan003@umn.edu
+- rich1044@umn.edu
 
 __Heroku URL:__ _url_
 

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router'
 import request from 'superagent';
 import Note from './Note';
+import NavigationBar from './NavigationBar'
 
 
 var UserPage = React.createClass({
@@ -83,17 +84,24 @@ var UserPage = React.createClass({
                     id={note.postId}
                     post={note}
                     onRemove={this.remove}
-                    onLike={this.like}>
+                    onLike={this.like}
+                    userId={this.props.routeParams.userId}>
                 {note.postPic}
               </Note>)
   },
   render(){
     console.log(this.state.notes)
+    var myfeedlink = "/user/"+this.props.routeParams.userId
+    var mypostslink = "/myposts/"+this.props.routeParams.userId
+    var explorelink = "/explore/"+this.props.routeParams.userId
+    var addcontentlink = "/add/"+this.props.routeParams.userId
     return(
       <div>
-      <h1>Welcome {this.props.routeParams.userId}. Here is your feed.</h1>
-      <Link to={`/explore/${this.props.routeParams.userId}`}><h2>Explore</h2></Link>
-      <Link to={`/myposts/${this.props.routeParams.userId}`}><h2>My Posts</h2></Link>
+      <NavigationBar
+          explorelink={explorelink}
+          myfeedlink={myfeedlink}
+          mypostslink={mypostslink}
+          addcontentlink={addcontentlink} />
       <div className="wrapper">
       <div className="columns">
       <div className='board'>

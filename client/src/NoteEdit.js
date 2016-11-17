@@ -14,7 +14,7 @@ var NoteEdit = React.createClass({
       tags.push.apply(tags,this.props.post.postTag)
       return (
         <div className="pin">
-                <Link to={`/pins/${this.props.id}`}>
+                <Link to={`/pins/${this.props.userId}/${this.props.id}`}>
                 <img src = {this.props.children} />
                 </Link>
                 <p>{this.props.post.postTitle}</p>

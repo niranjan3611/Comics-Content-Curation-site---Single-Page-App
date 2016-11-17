@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router'
 import request from 'superagent';
 import NoteEdit from './NoteEdit';
+import NavigationBar from './NavigationBar'
 
 var MyPosts = React.createClass ({
   getInitialState() {
@@ -42,22 +43,36 @@ var MyPosts = React.createClass ({
       return (<NoteEdit key={note.postId}
                     id={note.postId}
                     post={note}
-                    onDelete={this.delete}>
+                    onDelete={this.delete}
+                    userId={this.props.routeParams.userId}>
                 {note.postPic}
               </NoteEdit>)
   },
   render(){
+    var myfeedlink = "/user/"+this.props.routeParams.userId
+    var mypostslink = "/myposts/"+this.props.routeParams.userId
+    var explorelink = "/explore/"+this.props.routeParams.userId
+    var addcontentlink = "/add/"+this.props.routeParams.userId
     return (
       <div>
-      <Link to={`/explore/${this.props.routeParams.userId}`}><h2>Explore</h2></Link>
-      <Link to={`/user/${this.props.routeParams.userId}`}><h2>My feed</h2></Link>
-      <div className="wrapper">
-      <div className="columns">
-      <div className='board'>
-             {this.state.notes.map(this.eachNote)}
-          </div>
-          </div>
-          </div>
+      <NavigationBar
+          explorelink={explorelink}
+          myfeedlink={myfeedlink}
+          mypostslink={mypostslink}
+          addcontentlink={addcontentlink} />
+          {this.state.notes.length ?
+            <div className="wrapper">
+            <div className="columns">
+            <div className='board'>
+                   {this.state.notes.map(this.eachNote)}
+            </div>
+            </div>
+            </div>
+            :
+            <h2>Looks like you have not uploaded anything yet.
+            <Link to={`/add/${this.props.routeParams.userId}`}> Click here to upload your first post</Link></h2>
+          }
+
     </div>
     )
   }

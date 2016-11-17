@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router'
 import request from 'superagent';
 import Note from './Note';
+import NavigationBar from './NavigationBar'
 
 var SearchBar = React.createClass({
   handleChange() {
@@ -12,10 +13,10 @@ var SearchBar = React.createClass({
 
 render() {
   return (
-    <form>
-      <input
+    <form className="searchForm form-horizontal">
+      <input className="form-control"
         type="text"
-        placeholder="Title Search..."
+        placeholder="Tag Search..."
         value={this.props.filterText}
         ref="filterTextInput"
         onChange={this.handleChange}
@@ -24,6 +25,7 @@ render() {
     );
   }
 })
+
 
 var Board = React.createClass({
     getInitialState() {
@@ -75,9 +77,11 @@ var Board = React.createClass({
                       id={note.postId}
                       post={note}
                       onRemove={this.remove}
-                      onLike={this.like}>
-                  {note.postPic}
-                </Note>)
+                      onLike={this.like}
+                      userId = {this.props.routeParams.userId}>
+                    {note.postPic}
+                </Note>
+                )
     },
     handleUserInput(filterText) {
       this.setState({
@@ -95,10 +99,17 @@ var Board = React.createClass({
           filteredNotes.push(note);
         }
       });
+      var myfeedlink = "/user/"+this.props.routeParams.userId
+      var mypostslink = "/myposts/"+this.props.routeParams.userId
+      var explorelink = "/explore/"+this.props.routeParams.userId
+      var addcontentlink = "/add/"+this.props.routeParams.userId
         return (
           <div>
-          <Link to={`/user/${this.props.routeParams.userId}`}><h2>My feed</h2></Link>
-          <Link to={`/myposts/${this.props.routeParams.userId}`}><h2>My Posts</h2></Link>
+          <NavigationBar
+              explorelink={explorelink}
+              myfeedlink={myfeedlink}
+              mypostslink={mypostslink}
+              addcontentlink={addcontentlink} />
           <br/>
           <SearchBar
             filterText={this.state.filterText}
@@ -108,11 +119,11 @@ var Board = React.createClass({
             <div className="columns">
             <div className='board'>
                    {filteredNotes.map(this.eachNote)}
-                </div>
-                </div>
-                </div>
             </div>
-                )
+            </div>
+            </div>
+            </div>
+        )
     }
 })
 

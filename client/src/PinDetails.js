@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router'
 import request from 'superagent';
+import NavigationBar from './NavigationBar'
 
 var PinDetails = React.createClass({
   getInitialState() {
@@ -22,8 +23,17 @@ var PinDetails = React.createClass({
      });
   },
   render() {
+    var myfeedlink = "/user/"+this.props.routeParams.userId
+    var mypostslink = "/myposts/"+this.props.routeParams.userId
+    var explorelink = "/explore/"+this.props.routeParams.userId
+    var addcontentlink = "/add/"+this.props.routeParams.userId
     return (
-      <div>
+      <div className="pin-shell">
+      <NavigationBar
+          explorelink={explorelink}
+          myfeedlink={myfeedlink}
+          mypostslink={mypostslink}
+          addcontentlink={addcontentlink} />
         <br />
         <img src = {this.state.pin.postPic} />
         <p><b>Title: </b>{this.state.pin.postTitle}</p>
