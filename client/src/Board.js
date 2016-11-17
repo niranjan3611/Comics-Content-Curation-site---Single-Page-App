@@ -140,12 +140,11 @@ var Board = React.createClass({
           <SearchBar
             filterText={this.state.filterText}
             onUserInput={this.handleUserInput}
-          />
+          /> <br />
           <div className="tag-span">
           {this.state.tagset.map((tag) =>
-            <span>
-            <button onClick={() => this.filter(tag.tagName)}>{tag.tagName}</button>
-            <span> </span>
+            <span className="pricetag" onClick={() => this.filter(tag.tagName)}>
+              {tag.tagName} <span> </span>
             </span>
           )}
           </div>

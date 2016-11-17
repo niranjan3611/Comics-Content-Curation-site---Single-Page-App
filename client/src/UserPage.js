@@ -142,11 +142,10 @@ var UserPage = React.createClass({
         filterText={this.state.filterText}
         onUserInput={this.handleUserInput}
       />
-      <h1>Welcome {this.props.routeParams.userId}. Here is your feed.</h1>
+      <br />
       <div className="tag-span">
       {this.state.tagset.map((tag) =>
-        <span>
-        <button onClick={() => this.filter(tag)}>{tag}</button>
+        <span className="pricetag" onClick={() => this.filter(tag)}>{tag}
         <span> </span>
         </span>
       )}
