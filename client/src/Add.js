@@ -165,13 +165,13 @@ handleAddSubmitimageurl(event){
       <form onSubmit={this.handleAddSubmit}>
         <br />
         Enter the Web URL:
-        &nbsp; <input type="text" value={this.state.url} onChange={this.handleURL} />
+        &nbsp; <input type="text" className = "notYellow" value={this.state.url} onChange={this.handleURL} />
         <br />
         Enter the tags:
-        &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; <input type="text" value={this.state.tag} onChange={this.handleTag} />
+        &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; <input type="text" className = "notYellow" value={this.state.tag} onChange={this.handleTag} />
         <br />
         Enter details:
-        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  &nbsp; <input type="text" value={this.state.detail} onChange={this.handleDetail} />
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  &nbsp; <input type="text" className = "notYellow" value={this.state.detail} onChange={this.handleDetail} />
         <br /><br />
         <input type="submit" className =" btn btn-info" value="Submit" />&nbsp;
         <input type="button" className =" btn btn-info" value="Clear" onClick={this.handleClear} />

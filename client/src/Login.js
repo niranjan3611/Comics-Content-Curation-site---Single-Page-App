@@ -51,8 +51,8 @@ class Login extends React.Component {
       <div>
       <form onSubmit={this.handleSubmit}>
         <br />
-        Username: <input type="text" value={this.state.name} onChange={this.handleName} /><br />
-        Password: <input type="password" value={this.state.pass} onChange={this.handlePass} />
+        Username: <input className = "notYellow" type="text" value={this.state.name} onChange={this.handleName} /><br />
+        Password: <input className = "notYellow" type="password" value={this.state.pass} onChange={this.handlePass} />
         <br />
         <br />
         <button type="submit" class="btn btn-primary">Log In</button>

@@ -115,16 +115,16 @@ var tags = this.state.tags
       <form onSubmit={this.handleSignupSubmit}>
         <br />
         User Id:
-        <input type="text" value={this.state.id} onChange={this.handleId} />
+        <input type="text" className = "notYellow" value={this.state.id} onChange={this.handleId} />
         <br />
         User Name:
-        <input type="text" value={this.state.name} onChange={this.handleName} />
+        <input type="text" className = "notYellow" value={this.state.name} onChange={this.handleName} />
         <br />
         User Email:
-        <input type="text" value={this.state.email} onChange={this.handleEmail} />
+        <input type="text" className = "notYellow" value={this.state.email} onChange={this.handleEmail} />
         <br />
         Password:
-        <input type="password" value={this.state.pass} onChange={this.handlePass} />
+        <input type="password" className = "notYellow" value={this.state.pass} onChange={this.handlePass} />
         <br />
          {this.state.tags.map((tag) =>
             <span>

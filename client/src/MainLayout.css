@@ -176,6 +176,10 @@ div.note > textarea {
   color: black !important;
 }
 
+.notYellow {
+  color: black !important;
+}
+
 .tag-span {
   padding-left: 5%
 }
