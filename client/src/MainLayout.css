@@ -89,6 +89,10 @@ div.note > textarea {
   column-fill: auto;
 }
 
+.chooseinput , .WebUrl , .ImageUrl{
+  color: white;
+}
+
 .pin {
   display: inline-block;
   background: #FEFEFE;
@@ -174,7 +178,7 @@ div.note > textarea {
 }
 
 .pin-shell img {
-  
+
 }
 
 .MainLayout {
@@ -185,7 +189,7 @@ div.note > textarea {
         radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
     background-color:#282828;
     background-size:16px 16px;*/
-    
+
     background:
         linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
         linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
@@ -211,6 +215,13 @@ ul {
     overflow: hidden;
     border: 1px solid #e7e7e7;
     background-color: #f3f3f3;
+}
+
+.ImageUrl input{
+  color:black;
+}
+.WebUrl input{
+  color:black;
 }
 
 li {
