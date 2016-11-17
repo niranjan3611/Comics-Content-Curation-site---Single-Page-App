@@ -82,11 +82,7 @@ handleAddSubmitimageurl(event){
                     }
                   }
                 });
-
-
-
   event.preventDefault();
-
 }
 
   handleAddSubmit(event) {
