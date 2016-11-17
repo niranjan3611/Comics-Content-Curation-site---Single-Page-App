@@ -57,6 +57,11 @@ Some sites that can serve as inspiration:
 - zotero: users save academic articles, organize them into groups, tag them, and export them in various formats
 - reddit and hackernews: users post, vote on, and discuss URLs
 
+
+
+
+
+
 Generally, these sites allow users to (a) collect content into collections, lists, or tags, (b) annotate the content with additional information, and (c) browse and search for other information on the site.
 
 We encourage you to build a site to curate content that's interesting to you. Ideas:
