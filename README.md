@@ -14,8 +14,38 @@ __Heroku URL:__ _url_
 __Argument of ambition (optional, maximum 100 words):__
 _Briefly argue why this was a technically ambitious project_
 
+We wanted to implemented a react SPA with a wide spectrum of functionalities. Following is the list of functionalities:
+
+###### Implementing fluid image grid for content display
+###### Multiple modes of content import:
+   1) Via URL parsing (from http://www.gocomics.com/)
+   2) Via direct image upload
+###### Multi-tier search feature:
+   1) Search by tags
+   2) Search by title
+###### Multiple user support: 
+   1) Each user can specify his interests
+   2) Content related to user's interest will be shown in his personal feed
+   3) User can also view the entire content in the general feed
+   4) User can broaden his range of interests to inlcude additional content
+###### Annotate the content with additional information:
+   1) Implemented like feature
+   2) Each user can only like the content once
+###### Edit content:
+   1) User can edit the title, detail and URL of content
+###### Multiple modes of content deletion:
+   1) Temporary deletion from user's personal feed
+   2) Permanent deletion (only the owner of the content can delete it permanently)
+###### Local user authentication
+
 __Argument of execution (optional, maximum 100 words):__
 _Briefly argue why this was a well executed project_
+
+We implemented all the functionalities that we planned at the time of project commencement. Paid sepecial attention to maintain the modular structure of the code. 
+
+Each call from client to the server is handled through an API and we wrote 13 APIs for this project. On the client side, lot of planning and effort went into implementing react components and their interaction with one another. 14 major react components were implemented to support all client facing functionalities. Database schema used in the project is well defined and can support future enhancements.
+
+The project code is easy to understand and maintain.  
 
 ## Description ##
 The group project for module 3 is to create a website for collecting and organizing content.
