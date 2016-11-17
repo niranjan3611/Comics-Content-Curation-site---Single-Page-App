@@ -224,6 +224,14 @@ p, form {
     font-size: 1.2em;
 }
 
+button {
+  color: black !important;
+}
+
+.btn-primary, .btn-info {
+  background-color: #E88A1D !important;
+}
+
 h1,h3 {
   text-align: center;
 }
@@ -273,6 +281,8 @@ li a.active {
 
 .user-li {
   padding-right: 30px;
+  color: red !important;
+  font-weight: bold;
 }
 
 .thumbsup {
