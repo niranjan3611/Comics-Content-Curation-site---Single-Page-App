@@ -43,7 +43,8 @@ var MyPosts = React.createClass ({
       return (<NoteEdit key={note.postId}
                     id={note.postId}
                     post={note}
-                    onDelete={this.delete}>
+                    onDelete={this.delete}
+                    userId={this.props.routeParams.userId}>
                 {note.postPic}
               </NoteEdit>)
   },

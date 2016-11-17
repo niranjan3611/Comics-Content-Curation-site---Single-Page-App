@@ -76,7 +76,8 @@ var Board = React.createClass({
                       id={note.postId}
                       post={note}
                       onRemove={this.remove}
-                      onLike={this.like}>
+                      onLike={this.like}
+                      userId = {this.props.routeParams.userId}>
                   {note.postPic}
                 </Note>)
     },

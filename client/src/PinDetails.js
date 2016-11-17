@@ -29,6 +29,11 @@ var PinDetails = React.createClass({
     var addcontentlink = "/add/"+this.props.routeParams.userId
     return (
       <div>
+      <NavigationBar
+          explorelink={explorelink}
+          myfeedlink={myfeedlink}
+          mypostslink={mypostslink}
+          addcontentlink={addcontentlink} />
         <br />
         <img src = {this.state.pin.postPic} />
         <p><b>Title: </b>{this.state.pin.postTitle}</p>
