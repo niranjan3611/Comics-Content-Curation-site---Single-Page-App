@@ -87,7 +87,8 @@ var UserPage = React.createClass({
                     post={note}
                     onRemove={this.remove}
                     onLike={this.like}
-                    userId={this.props.routeParams.userId}>
+                    userId={this.props.routeParams.userId}
+                    flag={false}>
                 {note.postPic}
               </Note>)
   },

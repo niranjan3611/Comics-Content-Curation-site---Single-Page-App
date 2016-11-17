@@ -70,7 +70,8 @@ var Board = React.createClass({
                       onRemove={this.remove}
                       onLike={this.like}
                       userId = {this.props.routeParams.userId}
-                      appendtaginterests={this.addtagstouser}>
+                      appendtaginterests={this.addtagstouser}
+                      flag={true}>
                     {note.postPic}
                 </Note>
                 )
@@ -81,13 +82,13 @@ var Board = React.createClass({
       console.log('Will append ',addtags,'to ',this.props.routeParams.userId)
       request
         .post('/api/appendtags/')
-        .send({ tag: addtags1, user: this.props.routeParams.userId })
+        .send({ tags: addtags1, user: this.props.routeParams.userId })
         .set('Accept', 'application/json')
         .end(function(err, res){
           if (err || !res.ok) {
             alert('Oh no! error');
           } else {
-            alert('Liked Post');
+            alert('Appended. Check DB');
           }
         });
     },
