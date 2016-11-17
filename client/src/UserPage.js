@@ -87,7 +87,8 @@ var UserPage = React.createClass({
                     post={note}
                     onRemove={this.remove}
                     onLike={this.like}
-                    userId={this.props.routeParams.userId}>
+                    userId={this.props.routeParams.userId}
+                    flag={false}>
                 {note.postPic}
               </Note>)
   },
@@ -134,20 +135,22 @@ var UserPage = React.createClass({
           myfeedlink={myfeedlink}
           mypostslink={mypostslink}
           addcontentlink={addcontentlink}
-          activepagename = {"Home"} />
+          activepagename = {"Home"}
+          username = {this.props.routeParams.userId}/>
       <br/>
       <SearchBar
         filterText={this.state.filterText}
         onUserInput={this.handleUserInput}
       />
       <h1>Welcome {this.props.routeParams.userId}. Here is your feed.</h1>
-      Tags on this page:
+      <div className="tag-span">
       {this.state.tagset.map((tag) =>
         <span>
         <button onClick={() => this.filter(tag)}>{tag}</button>
         <span> </span>
         </span>
       )}
+      </div>
       <div className="wrapper">
       <div className="columns">
       <div className='board'>

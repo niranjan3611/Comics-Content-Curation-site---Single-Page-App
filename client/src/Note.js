@@ -35,6 +35,9 @@ var Note = React.createClass({
          }
        })
     },
+    addtagstouser(){
+      this.props.appendtaginterests(this.props.post.postTag);
+    },
     render() {
       var tags = []
       var nooflikes = this.state.likes
@@ -50,7 +53,12 @@ var Note = React.createClass({
                 )}
                 <p> Likes: {nooflikes}</p>
                 <span>
-                  <button onClick={this.like}>Like</button>
+                  {this.props.flag ?
+                  <button onClick={this.addtagstouser}>Add to my interests</button>
+                  :
+                  <span/>
+                  }
+                  <button onClick={this.like}><i className="fa fa-thumbs-up thumbsup"></i></button>
                   <button onClick={this.remove}>X</button>
                 </span>
             </div>

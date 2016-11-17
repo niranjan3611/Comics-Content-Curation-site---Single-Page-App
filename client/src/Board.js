@@ -69,10 +69,28 @@ var Board = React.createClass({
                       post={note}
                       onRemove={this.remove}
                       onLike={this.like}
-                      userId = {this.props.routeParams.userId}>
+                      userId = {this.props.routeParams.userId}
+                      appendtaginterests={this.addtagstouser}
+                      flag={true}>
                     {note.postPic}
                 </Note>
                 )
+    },
+    addtagstouser(addtags1){
+      var addtags = []
+      addtags.push.apply(addtags,addtags1)
+      console.log('Will append ',addtags,'to ',this.props.routeParams.userId)
+      request
+        .post('/api/appendtags/')
+        .send({ tags: addtags1, user: this.props.routeParams.userId })
+        .set('Accept', 'application/json')
+        .end(function(err, res){
+          if (err || !res.ok) {
+            alert('Oh no! error');
+          } else {
+            alert('Appended. Check DB');
+          }
+        });
     },
     handleUserInput(filterText) {
       this.setState({
@@ -116,19 +134,21 @@ var Board = React.createClass({
               myfeedlink={myfeedlink}
               mypostslink={mypostslink}
               addcontentlink={addcontentlink}
-              activepagename = {"Explore"} />
+              activepagename = {"Explore"}
+              username = {this.props.routeParams.userId} />
           <br/>
           <SearchBar
             filterText={this.state.filterText}
             onUserInput={this.handleUserInput}
           />
-          Tags on this page:
+          <div className="tag-span">
           {this.state.tagset.map((tag) =>
             <span>
             <button onClick={() => this.filter(tag.tagName)}>{tag.tagName}</button>
             <span> </span>
             </span>
           )}
+          </div>
             <div className="wrapper">
             <div className="columns">
             <div className='board'>

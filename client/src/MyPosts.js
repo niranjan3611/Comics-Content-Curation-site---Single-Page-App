@@ -76,7 +76,8 @@ var MyPosts = React.createClass ({
           myfeedlink={myfeedlink}
           mypostslink={mypostslink}
           addcontentlink={addcontentlink}
-          activepagename={"MyPost"}/>
+          activepagename={"MyPost"}
+          username = {this.props.routeParams.userId}/>
           {this.state.notes.length ?
             <div>
             <br />
