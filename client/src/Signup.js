@@ -11,16 +11,54 @@ class Signup extends React.Component {
       name: '',
       email: '',
       pass: '',
-      tags: ['']
+      tags: [''],
+      selectedtags: ''
   };
+
+
     this.handleId = this.handleId.bind(this);
     this.handleName = this.handleName.bind(this);
     this.handleEmail = this.handleEmail.bind(this);
     this.handlePass = this.handlePass.bind(this);
     this.handleTags = this.handleTags.bind(this);
     this.handleSignupSubmit = this.handleSignupSubmit.bind(this);
+    this.handleOptionChange = this.handleOptionChange.bind(this);
   }
 
+componentDidMount() {
+  var self = this;
+  var tagset = []
+  request
+   .get('/api/listtags')
+   .set('Accept', 'application/json')
+   .end(function(err, res) {
+     if (err || !res.ok) {
+       console.log('Oh no! error', err);
+     }
+     else {
+       tagset = res.body.alltags;
+       self.setState({tags: tagset})
+     }
+
+   });
+
+}
+
+handleOptionChange(event){
+  var tagsselect = event.target.value
+//  console.log('start - selectedtags ',this.state.selectedtags)
+var temp = this.state.selectedtags
+//console.log('temp    '+temp)
+if(!temp)
+  { temp= temp+tagsselect
+  }
+  else {
+    temp= temp+','+tagsselect
+  }
+//  console.log(' temp1 '+temp)
+this.setState({selectedtags: temp});
+//console.log('end - state ' +this.state.selectedtags);
+}
   handleId(event) {
     this.setState({id: event.target.value});
   }
@@ -47,7 +85,8 @@ class Signup extends React.Component {
     var userName=this.state.name;
     var userEmail=this.state.email;
     var userPass=this.state.pass;
-    var userTags=this.state.tags;
+    //console.log('state '+this.state.selectedtags)
+    var userTags=this.state.selectedtags;
     var self = this;
     request
      .get('/api/signUpX/'+userId+'/'+userName+'/'+userEmail+'/'+userPass+'/'+userTags)
@@ -70,6 +109,8 @@ class Signup extends React.Component {
   }
 
   render() {
+var tags = this.state.tags
+//console.log(this.state.selectedtags);
     return (
       <form onSubmit={this.handleSignupSubmit}>
         <br />
@@ -85,10 +126,14 @@ class Signup extends React.Component {
         Password:
         <input type="password" value={this.state.pass} onChange={this.handlePass} />
         <br />
-        Interest:
-        <input type="text" value={this.state.tags} onChange={this.handleTags} />
-        <br />
-        <input type="submit" value="Submit" />
+         {this.state.tags.map((tag) =>
+            <span>
+             {tag.tagName}
+             <input type="checkbox" name={tag.tagName} value={tag.tagName} onChange={this.handleOptionChange}/>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </span>
+          )}
+<br />
+        <input type="submit" className="btn btn-info" value="Submit" />
       </form>
     );
   }
