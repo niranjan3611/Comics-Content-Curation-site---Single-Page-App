@@ -60,13 +60,19 @@ var MyPosts = React.createClass ({
           myfeedlink={myfeedlink}
           mypostslink={mypostslink}
           addcontentlink={addcontentlink} />
-      <div className="wrapper">
-      <div className="columns">
-      <div className='board'>
-             {this.state.notes.map(this.eachNote)}
-          </div>
-          </div>
-          </div>
+          {this.state.notes.length ?
+            <div className="wrapper">
+            <div className="columns">
+            <div className='board'>
+                   {this.state.notes.map(this.eachNote)}
+            </div>
+            </div>
+            </div>
+            :
+            <h2>Looks like you have not uploaded anything yet.
+            <Link to={`/add/${this.props.routeParams.userId}`}> Click here to upload your first post</Link></h2>
+          }
+
     </div>
     )
   }

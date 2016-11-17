@@ -8,7 +8,7 @@ router.get('/userpage/:userId', function(req, res, next) {
   db.userInfo.find({userId: userid}).toArray(function(err, result) {
     if(err)
     {
-      res.status(404).send('invalid user ', req.params.userId);
+      res.send({flag: 0});
     }
     else if(result.length)
     {
@@ -16,7 +16,7 @@ router.get('/userpage/:userId', function(req, res, next) {
     }
     else
     {
-        res.status(404).send('invalid user ', req.params.userId);
+        res.send({flag: 0});
     }
   });
 });
@@ -26,7 +26,7 @@ router.get('/tagsearch/:tagId', function(req, res, next) {
   db.postDetail.find({postTag: tagid}).sort({postLikenum: -1}).toArray(function(err, result) {
     if(err)
     {
-      res.status(404).send('invalid user ', req.params.userId);
+      res.send({flag: 0});
     }
     else if(result.length)
     {
@@ -35,7 +35,8 @@ router.get('/tagsearch/:tagId', function(req, res, next) {
     }
     else
     {
-        res.status(404).send('invalid user ', req.params.userId);
+      var foo = {tagPosts: result}
+      res.send(foo);
     }
   });
 });
@@ -46,7 +47,7 @@ router.get('/userposts/:userId', function(req, res, next) {
     if(err)
     {
       console.log('error')
-      res.status(404).send('invalid user ', req.params.userId);
+      res.send({flag: 0});
     }
     else if(result.length)
     {
@@ -57,7 +58,8 @@ router.get('/userposts/:userId', function(req, res, next) {
     else
     {
         console.log('0 results')
-        res.status(404).send('invalid user ', req.params.userId);
+        var foo = {userPosts: result}
+        res.send(foo);
     }
   });
 });
@@ -66,7 +68,7 @@ router.get('/explore', function(req, res, next) {
   db.postDetail.find({}).sort({postLikenum: -1}).toArray(function(err, result) {
       if(err)
       {
-        res.status(404).send('no posts found');
+        res.send({flag: 0});
       }
       else if (result.length)
       {
@@ -75,7 +77,8 @@ router.get('/explore', function(req, res, next) {
       }
       else
       {
-        res.status(404).send('no posts found');
+        var foo = {allposts: result};
+        res.send(foo);
       }
     });
 });
@@ -85,7 +88,7 @@ router.get('/pins/display/:postId', function(req, res, next) {
   db.postDetail.find({postId: postid}).toArray(function(err, result) {
     if(err)
     {
-      res.status(404).send('post not found ', req.params.postId);
+      res.send({flag: 0});
     }
     else if (result.length)
     {
@@ -93,7 +96,7 @@ router.get('/pins/display/:postId', function(req, res, next) {
     }
     else
     {
-      res.status(404).send('post not found ', req.params.postId);
+      res.send({flag: 0});
     }
   });
 });
@@ -103,7 +106,7 @@ router.get('/delete/:postId', function(req, res, next) {
   db.postDetail.remove({postId: postid}, function(err, noOfRemovedDocs){
     if (err)
     {
-      res.status(404).send('post not found ', req.params.postId);
+      res.send({flag: 0});
     }
     else
     {
@@ -146,7 +149,7 @@ router.get('/signUpX/:userId/:userName/:userEmail/:userPass/:userTags', function
   db.userInfo.insert({userId: userid, userName: username, userEmail: useremail, userPass: userpass, userTags: tempString}, function(err, noOfInsertedDocs){
     if (err)
     {
-      res.status(404).send('could not insert ');
+      res.send({flag: 0});
     }
     else
     {
@@ -163,7 +166,7 @@ router.post('/like', function(req, res, next)
   db.postDetail.update({postId: postid}, {$push: {postLike: likeuser}, $inc: {postLikenum: 1}}, function(err, noUpdated){
     if (err)
     {
-      res.status(404).send('post not found ', req.params.postId);
+      res.send({flag: 0});
     }
     else if (noUpdated)
     {
@@ -172,7 +175,7 @@ router.post('/like', function(req, res, next)
     }
     else
     {
-      res.status(404).send('post not found ', req.params.postId);
+      res.send({flag: 0});
     }
   });
 });
@@ -191,7 +194,7 @@ router.post('/addX', function(req, res, next){
     db.postDetail.insert({postId: postid, postTitle: posttitle, postDetail: postdetail, postPic: postpic, postURL: posturl, postUser: postuser, postTag: posttag, postLike: postlike, postLikenum: 0}, function(err, noOfInsertedDocs){
       if (err)
       {
-        res.status(404).send('could not insert ');
+        res.send({flag: 0});
       }
       else
       {
