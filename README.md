@@ -18,8 +18,8 @@ We wanted to implemented a react SPA with a wide spectrum of functionalities. Fo
 
 ###### Implementing fluid image grid for content display
 ###### Multiple modes of content import:
-   * Via URL parsing (from http://www.gocomics.com/)
-   * Via direct image upload
+   1) Via URL parsing (from http://www.gocomics.com/)
+   2) Via direct image upload
 ###### Multi-tier search feature:
    1) Search by tags
    2) Search by title
