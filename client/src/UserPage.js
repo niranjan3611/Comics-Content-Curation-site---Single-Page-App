@@ -142,13 +142,14 @@ var UserPage = React.createClass({
         onUserInput={this.handleUserInput}
       />
       <h1>Welcome {this.props.routeParams.userId}. Here is your feed.</h1>
-      Tags on this page:
+      <div className="tag-span">
       {this.state.tagset.map((tag) =>
         <span>
         <button onClick={() => this.filter(tag)}>{tag}</button>
         <span> </span>
         </span>
       )}
+      </div>
       <div className="wrapper">
       <div className="columns">
       <div className='board'>

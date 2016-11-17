@@ -69,10 +69,27 @@ var Board = React.createClass({
                       post={note}
                       onRemove={this.remove}
                       onLike={this.like}
-                      userId = {this.props.routeParams.userId}>
+                      userId = {this.props.routeParams.userId}
+                      appendtaginterests={this.addtagstouser}>
                     {note.postPic}
                 </Note>
                 )
+    },
+    addtagstouser(addtags1){
+      var addtags = []
+      addtags.push.apply(addtags,addtags1)
+      console.log('Will append ',addtags,'to ',this.props.routeParams.userId)
+      request
+        .post('/api/appendtags/')
+        .send({ tag: id, user: this.props.routeParams.userId })
+        .set('Accept', 'application/json')
+        .end(function(err, res){
+          if (err || !res.ok) {
+            alert('Oh no! error');
+          } else {
+            alert('Liked Post');
+          }
+        });
     },
     handleUserInput(filterText) {
       this.setState({
@@ -123,13 +140,14 @@ var Board = React.createClass({
             filterText={this.state.filterText}
             onUserInput={this.handleUserInput}
           />
-          Tags on this page:
+          <div className="tag-span">
           {this.state.tagset.map((tag) =>
             <span>
             <button onClick={() => this.filter(tag.tagName)}>{tag.tagName}</button>
             <span> </span>
             </span>
           )}
+          </div>
             <div className="wrapper">
             <div className="columns">
             <div className='board'>
